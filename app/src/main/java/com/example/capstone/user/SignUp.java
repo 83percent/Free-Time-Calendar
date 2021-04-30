@@ -51,7 +51,7 @@ public class SignUp extends AppCompatActivity {
                     Toast.makeText(SignUp.this, "비밀번호는 8~20자로 작성해주세요", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(password != rePassword) {
+                if(!password.equals(rePassword) ) {
                     Toast.makeText(SignUp.this, "비밀번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -73,6 +73,7 @@ public class SignUp extends AppCompatActivity {
                     TODO : Send "sign up" request
 
                 */
+                finish();
             }
         });
         back.setOnClickListener(new View.OnClickListener() {
