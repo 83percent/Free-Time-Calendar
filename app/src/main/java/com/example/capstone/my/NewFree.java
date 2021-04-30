@@ -35,7 +35,9 @@ public class NewFree extends Fragment {
         starts[0].setText(year);
         starts[1].setText(month);
         starts[2].setText(day);
-
+        ends[0].setText(year);
+        ends[1].setText(month);
+        ends[2].setText(day);
 
         return rootView;
     }

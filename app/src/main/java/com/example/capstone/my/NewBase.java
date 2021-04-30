@@ -107,8 +107,4 @@ public class NewBase extends AppCompatActivity {
             }
         });
     }
-    public void optionToggle(String nowView) {
-
-
-    }
 }

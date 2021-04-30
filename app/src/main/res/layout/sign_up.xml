@@ -48,6 +48,7 @@
                 android:fontFamily="@font/montserrat"
                 android:textColor="#000000"/>
             <EditText
+                android:id="@+id/inputEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
@@ -79,6 +80,7 @@
                 android:fontFamily="@font/montserrat"
                 android:textColor="#000000"/>
             <EditText
+                android:id="@+id/inputPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
@@ -93,6 +95,7 @@
                 android:layout_height="2dp"
                 android:background="#bbbbbb"/>
             <EditText
+                android:id="@+id/inputRePassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
@@ -124,6 +127,7 @@
                 android:fontFamily="@font/montserrat"
                 android:textColor="#000000"/>
             <EditText
+                android:id="@+id/inputName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"

@@ -16,7 +16,6 @@ public class NewSchedule extends Fragment {
     private EditText starts[] = new EditText[5], ends[] = new EditText[5];
     private Integer[] startIDs = {R.id.startYear, R.id.startMonth, R.id.startDay, R.id.startHour, R.id.startMin};
     private Integer[] endIDs = {R.id.endYear, R.id.endMonth, R.id.endDay, R.id.endHour, R.id.endMin};
-
     private String year, month, day;
 
     @Nullable
@@ -34,6 +33,9 @@ public class NewSchedule extends Fragment {
         starts[0].setText(year);
         starts[1].setText(month);
         starts[2].setText(day);
+        ends[0].setText(year);
+        ends[1].setText(month);
+        ends[2].setText(day);
         return rootView;
     }
 }
