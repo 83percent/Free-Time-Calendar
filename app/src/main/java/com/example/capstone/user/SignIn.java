@@ -17,10 +17,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.capstone.MainBaseActivity;
 import com.example.capstone.R;
 import com.example.capstone.connect.Connect;
+import com.example.capstone.connect.RetrofitConnection;
 import com.example.capstone.data.ResponseBean;
+import com.example.capstone.data.SignInBean;
+import com.example.capstone.data.SignUpBean;
 import com.example.capstone.lib.Regexp;
 
 import org.json.JSONObject;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class SignIn extends AppCompatActivity {
@@ -64,13 +71,36 @@ public class SignIn extends AppCompatActivity {
                 } else { Toast.makeText(SignIn.this, "이메일을 확인해주세요", Toast.LENGTH_SHORT).show(); } // Wrong Email
 
                 try {
-                    SendRequest send = new SendRequest();
+                    Log.d("Connect Test", "Send Start");
+                    SignInBean bean = new SignInBean();
+                    bean.setEmail(email);
+                    bean.setPassword(password);
+                    RetrofitConnection retrofitConnection = RetrofitConnection.getInstance();
+                    Call<String> call = retrofitConnection.server.sendSignIn(bean);
+                    call.enqueue(new Callback<String>() {
+                        @Override
+                        public void onResponse(Call<String> call, Response<String> response) {
+                            Log.d("Connect Test", "income Status " + response.code());
+                            Log.d("Connect Test", "income boolean " + response.isSuccessful());
+                            Log.d("Connect Test", "income String " + response.body());
+                        }
+
+                        @Override
+                        public void onFailure(Call<String> call, Throwable t) {
+                            Log.d("Connect Test", "연결 실패");
+                            Log.d("Connect Test", t.getMessage());
+
+                        }
+                    });
+
+
+                    /*SendRequest send = new SendRequest();
                     JSONObject jsonObject = new JSONObject();
                     jsonObject.put("email",email);
                     jsonObject.put("password", password);
                     ResponseBean responseBean = (ResponseBean) send.execute(jsonObject).get();
                     Log.d("Connect Test", "get Status: " + responseBean.getStatus());
-                    Log.d("Connect Test", "get Data: " + responseBean.getData());
+                    Log.d("Connect Test", "get Data: " + responseBean.getData());*/
                 } catch(Exception e) {
                     e.printStackTrace();
                     Log.d("Connect Test", "onClick: "+false);
@@ -94,25 +124,39 @@ public class SignIn extends AppCompatActivity {
         });
     }
 
-    private class SendRequest extends AsyncTask {
+    /* private class SendRequest extends AsyncTask {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
         }
 
         @Override
-        protected ResponseBean doInBackground(Object[] objects) {
-            if(objects[0] == null) return null;
-            Connect connect = Connect.getInstance();
-            ResponseBean responseBean = null;
-
+        protected boolean doInBackground(Object[] objects) {
+            if(objects[0] == null) return false;
+            SignUpBean bean = null;
+            boolean result = false;
             try {
-                responseBean = connect.send("/user","POST",(JSONObject) objects[0]);
+                bean = (SignUpBean) objects[0];
+                RetrofitConnection retrofitConnection = RetrofitConnection.getInstance();
+                Call<String> call = retrofitConnection.server.sendSignin(bean);
+                call.enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        Log.d("Connect Test", "income Status " + response.code());
+                        Log.d("Connect Test", "income boolean " + response.isSuccessful());
+                    }
+
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        Log.d("Connect Test", "연결 실패");
+                    }
+                });
+                return result;
             } catch(Exception e) {
                 e.printStackTrace();
-                return null;
+                return result;
             }
-            return responseBean;
+
         }
-    }
+    }*/
 }

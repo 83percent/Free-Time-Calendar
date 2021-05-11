@@ -11,8 +11,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.capstone.R;
+import com.example.capstone.connect.RetrofitConnection;
 import com.example.capstone.data.SignUpBean;
 import com.example.capstone.lib.Regexp;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SignUp extends AppCompatActivity {
     private RelativeLayout signUp;
@@ -63,17 +68,8 @@ public class SignUp extends AppCompatActivity {
                     Toast.makeText(SignUp.this, "이름이 너무 깁니다", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                SignUpBean bean = new SignUpBean();
-                bean.setEmail(email);
-                bean.setPasssword(password);
-                bean.setName(name);
+                send(email, password, name);
 
-                /*
-
-                    TODO : Send "sign up" request
-
-                */
-                finish();
             }
         });
         back.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +78,34 @@ public class SignUp extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    private void send(String email, String password, String name) {
+        SignUpBean bean = new SignUpBean(email, password, name);
+        RetrofitConnection retrofitConnection = RetrofitConnection.getInstance();
+        Call<String> call = retrofitConnection.server.sendSignUp(bean);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                switch(response.code()) {
+                    case 200 : {
+                        finish();
+                        break;
+                    }
+                    case 208 : {
+                        Toast.makeText(SignUp.this, "이미 가입된 이메일 입니다.", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                    case 412 :
+                    default : {
+                        Toast.makeText(SignUp.this, "잠시 후 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
 
-
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(SignUp.this, "잠시 후 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
