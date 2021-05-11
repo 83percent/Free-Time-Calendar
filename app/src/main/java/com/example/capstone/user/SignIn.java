@@ -1,6 +1,7 @@
 package com.example.capstone.user;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,16 +16,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.capstone.MainBaseActivity;
 import com.example.capstone.R;
+import com.example.capstone.connect.Connect;
+import com.example.capstone.data.ResponseBean;
 import com.example.capstone.lib.Regexp;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import org.json.JSONObject;
+
 
 public class SignIn extends AppCompatActivity {
+    // View
     private RelativeLayout signIn;
     private TextView createAccountBtn;
     private ImageButton back;
     private EditText inputEmail, inputPassword;
+
+    // Field
     private Regexp regexp = null;
 
     @Override
@@ -56,8 +62,22 @@ public class SignIn extends AppCompatActivity {
                         startActivity(intent);
                     } else { Toast.makeText(SignIn.this, "비밀번호 8~20자리를 입력해주세요",Toast.LENGTH_SHORT).show(); } // Wrong Password
                 } else { Toast.makeText(SignIn.this, "이메일을 확인해주세요", Toast.LENGTH_SHORT).show(); } // Wrong Email
+
+                try {
+                    SendRequest send = new SendRequest();
+                    JSONObject jsonObject = new JSONObject();
+                    jsonObject.put("email",email);
+                    jsonObject.put("password", password);
+                    ResponseBean responseBean = (ResponseBean) send.execute(jsonObject).get();
+                    Log.d("Connect Test", "get Status: " + responseBean.getStatus());
+                    Log.d("Connect Test", "get Data: " + responseBean.getData());
+                } catch(Exception e) {
+                    e.printStackTrace();
+                    Log.d("Connect Test", "onClick: "+false);
+                }
             }
         });
+
         createAccountBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,4 +94,25 @@ public class SignIn extends AppCompatActivity {
         });
     }
 
+    private class SendRequest extends AsyncTask {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected ResponseBean doInBackground(Object[] objects) {
+            if(objects[0] == null) return null;
+            Connect connect = Connect.getInstance();
+            ResponseBean responseBean = null;
+
+            try {
+                responseBean = connect.send("/user","POST",(JSONObject) objects[0]);
+            } catch(Exception e) {
+                e.printStackTrace();
+                return null;
+            }
+            return responseBean;
+        }
+    }
 }
