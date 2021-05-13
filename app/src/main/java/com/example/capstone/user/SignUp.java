@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.capstone.R;
 import com.example.capstone.connect.RetrofitConnection;
-import com.example.capstone.data.SignUpBean;
+import com.example.capstone.bean.SignUpBean;
 import com.example.capstone.lib.Regexp;
 
 import retrofit2.Call;

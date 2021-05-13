@@ -1,4 +1,4 @@
-package com.example.capstone.data;
+package com.example.capstone.bean;
 
 public class ResponseBean {
     private int status;

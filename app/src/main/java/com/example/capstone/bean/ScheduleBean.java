@@ -1,11 +1,12 @@
-package com.example.capstone.data;
+package com.example.capstone.bean;
 
-public class FreeBean {
+public class ScheduleBean {
     private String sYear, sMonth, sDay, sHour, sMin;
     private String eYear, eMonth, eDay, eHour, eMin;
-    public FreeBean(String start, String end) {
+    private String name;
 
-    }
+    public void setName(String name) { this.name = name; }
+    public String getName() { return name; }
     public void setsYear(String sYear) { this.sYear = sYear; }
     public String getsYear() { return sYear; }
     public void setsMonth(String sMonth) { this.sMonth = sMonth; }

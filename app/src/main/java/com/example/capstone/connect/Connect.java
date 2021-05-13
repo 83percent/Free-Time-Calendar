@@ -2,7 +2,7 @@ package com.example.capstone.connect;
 
 import android.util.Log;
 
-import com.example.capstone.data.ResponseBean;
+import com.example.capstone.bean.ResponseBean;
 
 import org.json.JSONObject;
 
@@ -11,7 +11,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.Buffer;
 import java.util.Arrays;
 
 public class Connect {

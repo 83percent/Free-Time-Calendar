@@ -37,6 +37,8 @@
         </LinearLayout>
     </LinearLayout>
     <FrameLayout
+        android:id="@+id/btnWrapper"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"

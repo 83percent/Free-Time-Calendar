@@ -1,4 +1,4 @@
-package com.example.capstone.data;
+package com.example.capstone.bean;
 
 public class SignUpBean {
     private String email;
