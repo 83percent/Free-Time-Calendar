@@ -3,7 +3,8 @@ package com.example.capstone.bean;
 public class FreeBean {
     private int sYear, sMonth, sDay, sHour, sMin;
     private int eYear, eMonth, eDay, eHour, eMin;
-
+    private int id;
+    private String code;
 
     public void setStart(int[] starts) {
         this.sYear = starts[0];
@@ -35,6 +36,21 @@ public class FreeBean {
     }
 
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getCode() {
+        return code;
+    }
 
     public void setsYear(int sYear) { this.sYear = sYear; }
     public int getsYear() { return sYear; }

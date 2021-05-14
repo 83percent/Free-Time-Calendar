@@ -27,10 +27,37 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <!-- Print Group List -->
-
-            
+            android:orientation="vertical"
+            android:paddingTop="30dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#888888"/>
+            <LinearLayout
+                android:id="@+id/signOut"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingLeft="35dp">
+                <FrameLayout
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_baseline_lock_open_24"
+                    android:backgroundTint="#ff2244"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sign Out"
+                    android:paddingLeft="10dp"
+                    android:fontFamily="@font/montserrat"
+                    android:textSize="17sp"
+                    android:textColor="#ff2244"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#888888"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

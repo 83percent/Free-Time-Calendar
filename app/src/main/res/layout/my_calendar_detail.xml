@@ -457,17 +457,11 @@
             </LinearLayout>
             <!-- Schedule Graph -->
             <LinearLayout
+                android:id="@+id/barWrapper"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center_horizontal">
-                <LinearLayout
-                    android:layout_marginTop="360dp"
-                    android:layout_width="30dp"
-                    android:layout_height="90dp"
-                    android:background="@drawable/blue_btn">
-
-                </LinearLayout>
+                android:orientation="horizontal"
+                android:paddingLeft="70dp">
             </LinearLayout>
         </FrameLayout>
     </ScrollView>

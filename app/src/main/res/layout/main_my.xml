@@ -166,18 +166,7 @@
                             android:text="" />
                         <FrameLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp">
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="3dp"
-                                android:background="#FF5151"/>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="9dp"
-                                android:layout_marginTop="36dp"
-                                android:background="#32BE38" />
-                        </FrameLayout>
+                            android:layout_height="72dp" />
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -333,7 +322,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <LinearLayout
+                        <FrameLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="vertical"/>
@@ -575,7 +564,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <LinearLayout
+                        <FrameLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="vertical"/>

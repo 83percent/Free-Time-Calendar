@@ -1,6 +1,8 @@
 package com.example.capstone;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
@@ -166,6 +168,31 @@ public class MainBaseActivity extends AppCompatActivity {
             onMenu.getChildAt(0).setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.active)));
         }
     }
+
+    public boolean signOut() {
+        SharedPreferences pref = getSharedPreferences("FreeTime" , MODE_PRIVATE);
+        String id = pref.getString("id", null);
+        if(id != null) {
+            SharedPreferences.Editor editor = pref.edit();
+            editor.remove("id");
+            editor.commit();
+            Intent intent = new Intent(getApplicationContext(), WelcomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+
+            return true;
+        } else return false;
+    }
+    public String getID() {
+        SharedPreferences pref = getSharedPreferences("FreeTime" , MODE_PRIVATE);
+        String id = pref.getString("id", null);
+        return id;
+    }
+    public Context getContext() {
+        return getApplicationContext();
+    }
+
 }
 
 

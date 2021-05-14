@@ -9,6 +9,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,8 +18,12 @@ import com.example.capstone.data.DataManager;
 import com.example.capstone.user.SignIn;
 
 public class WelcomeActivity extends AppCompatActivity {
+    // View
     private RelativeLayout goLoginBtn;
     private FrameLayout btnWrapper;
+
+    // Field
+    private long backKeyPressedTime = 0;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +74,16 @@ public class WelcomeActivity extends AppCompatActivity {
                 }
             }, 1500);
         }
+    }
 
+    @Override
+    public void onBackPressed() {
+        if (System.currentTimeMillis() > backKeyPressedTime + 2500) {
+            backKeyPressedTime = System.currentTimeMillis();
+            Toast.makeText(this, "뒤로 가기 버튼을 한 번 더 누르시면 종료됩니다.", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (System.currentTimeMillis() <= backKeyPressedTime + 2500) { finish(); }
 
     }
 }

@@ -14,19 +14,19 @@ public class DataManager extends SQLiteOpenHelper {
 
         // User Time Table
         db.execSQL("CREATE TABLE timeTBL (" +
-                "code char(24) not null unique, " +
-                "id INTEGER not null primary key autoincrement," +
-                "type varchar default 'free'," +
-                "startYear INTEGER not null," +
-                "startMonth INTEGER not null," +
-                "startDay INTEGER not null," +
-                "startHour INTEGER not null," +
-                "startMin INTEGER not null," +
-                "endYear INTEGER not null," +
-                "endMonth INTEGER not null," +
-                "endDay INTEGER not null," +
-                "endHour INTEGER not null," +
-                "endMin INTEGER not null)");
+                "code char(24) not null unique, " + // 0
+                "id INTEGER not null primary key autoincrement," + // 1
+                "type varchar default 'free'," + // 2
+                "startYear INTEGER not null," + // 3
+                "startMonth INTEGER not null," + // 4
+                "startDay INTEGER not null," + // 5
+                "startHour INTEGER not null," + // 6
+                "startMin INTEGER not null," + // 7
+                "endYear INTEGER not null," + // 8
+                "endMonth INTEGER not null," + // 9
+                "endDay INTEGER not null," + // 10
+                "endHour INTEGER not null," + // 11
+                "endMin INTEGER not null)"); // 12
 
         // Schedule Time
         db.execSQL("CREATE TABLE scheduleNameTBL (" +

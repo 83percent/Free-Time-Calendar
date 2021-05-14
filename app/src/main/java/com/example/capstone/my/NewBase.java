@@ -124,10 +124,14 @@ public class NewBase extends AppCompatActivity {
         TimeData timeData = new TimeData(id, getApplicationContext());
         timeData.set(bean);
         if(bean != null) {
+            final int month = bean.getsMonth();
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
+                    Intent intent = new Intent();
+                    intent.putExtra("month", month);
+                    setResult(RESULT_OK, intent);
                     finish();
                 }
             }, 500);

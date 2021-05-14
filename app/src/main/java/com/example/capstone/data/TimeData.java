@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.capstone.bean.FreeBean;
 import com.example.capstone.bean.IDReturnBean;
 import com.example.capstone.bean.TimeBean;
 import com.example.capstone.connect.RetrofitConnection;
@@ -48,7 +49,6 @@ public class TimeData {
             return false;
         } finally {
             sql.close();
-            getAll();
         }
 
     }
@@ -82,21 +82,52 @@ public class TimeData {
     /**
      * 데이터 불러오기
      */
-    public void getAll() {
+
+    public FreeBean[] get(int year, int month) {
+        return get(year,month,-1);
+    }
+    public FreeBean[] get(int year, int month, int day) {
         sql = db.getReadableDatabase();
+        Log.d("income Data", "get: days : year : " + year + "Month : " + month);
         Cursor cursor = null;
         try {
-            cursor = sql.rawQuery("SELECT * FROM timeTBL ", null);
-            while(cursor.moveToNext()) {
-                Log.d("getData", "getAll: " + cursor.getString(0));
+            String query;
+            if(day > 0) {
+                query = "SELECT * FROM TIMETBL WHERE startYear="+year+" AND startMonth="+month+" AND startDay="+day+" ORDER BY startHour ASC";
+            } else {
+                query = "SELECT * FROM TIMETBL WHERE startYear="+year+" AND startMonth="+month;
             }
+            cursor = sql.rawQuery(query, null);
+            cursor.moveToLast();
+            FreeBean[] freeBeans = new FreeBean[cursor.getPosition()];
+            cursor.moveToFirst();
+            FreeBean bean = null;
+            Log.d("income Data", "get: days : Cursor count"+freeBeans.length);
+            if(freeBeans.length > 0) {
+                for(int i=0; i<freeBeans.length; i++) {
+                    cursor.moveToNext();
+                    bean = new FreeBean();
+
+                    bean.setCode(cursor.getString(0));
+                    bean.setId(cursor.getInt(1));
+                    bean.setsDay(cursor.getInt(5));
+                    bean.setsHour(cursor.getInt(6));
+                    bean.setsMin(cursor.getInt(7));
+                    bean.seteDay(cursor.getInt(10));
+                    bean.seteHour(cursor.getInt(11));
+                    bean.seteMin(cursor.getInt(12));
+
+                    freeBeans[i] = bean;
+
+                }
+                return freeBeans;
+            } else  return null;
         } catch(Exception e) {
             e.printStackTrace();
+            return null;
         } finally {
             if(cursor == null) cursor.close();
             sql.close();
         }
-
-
     }
 }
