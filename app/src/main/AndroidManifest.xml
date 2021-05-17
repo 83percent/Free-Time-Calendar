@@ -26,6 +26,7 @@
         <activity android:name=".user.SignIn"/>
         <activity android:name=".my.DetailActivity"/>
         <activity android:name=".my.NewBase"/>
+        <activity android:name=".group.GroupMainCalendar"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

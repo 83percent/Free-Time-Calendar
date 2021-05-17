@@ -1,6 +1,7 @@
 package com.example.capstone.group;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,5 +52,12 @@ public class GroupListAdapter extends BaseAdapter {
             e.printStackTrace();
         }
         return null;
+    }
+    public Intent getItemIntent(final int position) {
+        Intent resultIntent = new Intent(context, GroupMainCalendar.class);
+        resultIntent.putExtra("groupID", listBeans[position].getId());
+        resultIntent.putExtra("groupName", listBeans[position].getName());
+
+        return resultIntent;
     }
 }

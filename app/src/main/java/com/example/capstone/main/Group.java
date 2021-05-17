@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -66,7 +67,6 @@ public class Group extends Fragment {
         invitationBtn = (RelativeLayout) activity.findViewById(R.id.invitationCodeBtn);
         newGroupBtn = (RelativeLayout) activity.findViewById(R.id.newGroupBtn);
         groupListView = (ListView) rootView.findViewById(R.id.groupListView);
-        Log.d("List View", "list view : " + groupListView);
 
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +98,14 @@ public class Group extends Fragment {
                 startActivityForResult(intent, 8081);
             }
         });
+        groupListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent groupIntent = adapter.getItemIntent(position);
+                startActivity(groupIntent);
+            }
+        });
+
         createGroupList();
         return rootView;
     }
