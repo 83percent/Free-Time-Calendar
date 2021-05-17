@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
+    android:paddingVertical="15dp"
+    android:background="@drawable/group_list"
+    android:paddingHorizontal="20dp">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingLeft="14dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <TextView
+                android:id="@+id/gname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="그룹 이름"
+                android:textSize="21sp"
+                android:textColor="#000000"/>
+            <ImageView
+                android:layout_marginLeft="10dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/ic_outline_group_24" />
+            <TextView
+                android:id="@+id/gcount1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/gcount2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="12sp"
+                android:textColor="#888888"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="명의 사람들과 함께하는 중입니다."
+                android:textSize="12sp"
+                android:textColor="#888888"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/gscount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="#888888"
+        android:textSize="13sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="개의 일정"
+        android:textColor="#888888"
+        android:textSize="13sp"/>
+</LinearLayout>

@@ -14,19 +14,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import com.example.capstone.group.AddNewGroup;
-import com.example.capstone.group.InputInvitation;
 import com.example.capstone.main.Group;
 import com.example.capstone.main.My;
 import com.example.capstone.main.Notification;
 import com.example.capstone.main.Setting;
 
 public class MainBaseActivity extends AppCompatActivity {
-    // View
-    private LinearLayout groupAddOptionWrapper;
-    private LinearLayout groupAddOptionCloser;
-    private RelativeLayout invitationBtn;
-    private RelativeLayout newGroupBtn;
 
     // Footer Btn
     private RelativeLayout myBtn;
@@ -51,12 +44,6 @@ public class MainBaseActivity extends AppCompatActivity {
         setContentView(R.layout.main_base);
 
         // View
-        //fragmentFrame = (FrameLayout) findViewById(R.id.fragmentFrame);
-        groupAddOptionWrapper = (LinearLayout) findViewById(R.id.addGroupWrapper);
-        groupAddOptionCloser = (LinearLayout) findViewById(R.id.addGroupWrapperCloser);
-        invitationBtn = (RelativeLayout) findViewById(R.id.invitationCodeBtn);
-        newGroupBtn = (RelativeLayout) findViewById(R.id.newGroupBtn);
-
         // Footer Btn
         myBtn = (RelativeLayout) findViewById(R.id.myBtn);
         groupBtn = (RelativeLayout) findViewById(R.id.groupBtn);
@@ -115,35 +102,11 @@ public class MainBaseActivity extends AppCompatActivity {
                 }
             }
         });
-
-        // Group Add Option
-        groupAddOptionCloser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toggleAddGroupOption(false);
-            }
-        });
-        invitationBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toggleAddGroupOption(false);
-                Intent intent = new Intent(getApplicationContext(), InputInvitation.class);
-                startActivity(intent);
-            }
-        });
-        newGroupBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toggleAddGroupOption(false);
-                Intent intent = new Intent(getApplicationContext(), AddNewGroup.class);
-                startActivity(intent);
-            }
-        });
     }
     @Override
     public void onBackPressed() {
         if(isOptionOpen) {
-            toggleAddGroupOption(false);
+            groupFragment.toggleAddGroupOption(false);
         } else {
             if (System.currentTimeMillis() > backKeyPressedTime + 2500) {
                 backKeyPressedTime = System.currentTimeMillis();
@@ -152,14 +115,6 @@ public class MainBaseActivity extends AppCompatActivity {
             }
             if (System.currentTimeMillis() <= backKeyPressedTime + 2500) { finish(); }
         }
-    }
-    public void toggleAddGroupOption(boolean toggle) {
-        if(toggle) {
-            if(groupAddOptionWrapper.getVisibility() == View.GONE) groupAddOptionWrapper.setVisibility(View.VISIBLE);
-        } else {
-            if(groupAddOptionWrapper.getVisibility() == View.VISIBLE) groupAddOptionWrapper.setVisibility(View.GONE);
-        }
-        isOptionOpen = toggle;
     }
     private void menuChange(RelativeLayout menu) {
         if(onMenu != null) {

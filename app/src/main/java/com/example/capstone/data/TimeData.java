@@ -88,28 +88,28 @@ public class TimeData {
     }
     public FreeBean[] get(int year, int month, int day) {
         sql = db.getReadableDatabase();
-        Log.d("income Data", "get: days : year : " + year + "Month : " + month);
+        //Log.d("income Data", "get: days : year : " + year + " / Month : " + month + " / Day : " + day);
         Cursor cursor = null;
         try {
             String query;
             if(day > 0) {
-                query = "SELECT * FROM TIMETBL WHERE startYear="+year+" AND startMonth="+month+" AND startDay="+day+" ORDER BY startHour ASC";
+                query = "SELECT * FROM TIMETBL WHERE startYear="+year+" AND startMonth="+month+" AND startDay="+day;
             } else {
                 query = "SELECT * FROM TIMETBL WHERE startYear="+year+" AND startMonth="+month;
             }
             cursor = sql.rawQuery(query, null);
             cursor.moveToLast();
-            FreeBean[] freeBeans = new FreeBean[cursor.getPosition()];
-            cursor.moveToFirst();
+
+            FreeBean[] freeBeans = new FreeBean[cursor.getPosition()+1];
+            cursor.moveToPosition(-1);
             FreeBean bean = null;
-            Log.d("income Data", "get: days : Cursor count"+freeBeans.length);
             if(freeBeans.length > 0) {
                 for(int i=0; i<freeBeans.length; i++) {
                     cursor.moveToNext();
                     bean = new FreeBean();
-
                     bean.setCode(cursor.getString(0));
                     bean.setId(cursor.getInt(1));
+                    bean.setType(cursor.getString(2));
                     bean.setsDay(cursor.getInt(5));
                     bean.setsHour(cursor.getInt(6));
                     bean.setsMin(cursor.getInt(7));

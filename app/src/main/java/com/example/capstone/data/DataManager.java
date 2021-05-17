@@ -11,7 +11,6 @@ public class DataManager extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
         // User Time Table
         db.execSQL("CREATE TABLE timeTBL (" +
                 "code char(24) not null unique, " + // 0
@@ -30,19 +29,23 @@ public class DataManager extends SQLiteOpenHelper {
 
         // Schedule Time
         db.execSQL("CREATE TABLE scheduleNameTBL (" +
-                "id INTEGER not null primary key," +
+                "code char(24) not null primary key," +
                 "name varchar(20) not null," +
-                "foreign key(id) references time(id))");
+                "foreign key(code) references timeTBL(code))");
 
         // Group
         db.execSQL("CREATE TABLE groupTBL(" +
-                "code char(24) not null primary key," +
+                "groupCode char(24) not null primary key," + // mongoDB _id
                 "name varchar(20) not null," +
+                "admin char(24) not null," +
                 "length INTEGER default 1)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL("DROP TABLE IF EXISTS timeTBL");
+        db.execSQL("DROP TABLE IF EXISTS scheduleNameTBL");
+        db.execSQL("DROP TABLE IF EXISTS groupTBL");
+        db.execSQL("DROP TABLE IF EXISTS groupMemberTBL");
     }
 }

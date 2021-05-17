@@ -166,18 +166,18 @@ public class My extends Fragment {
         int firstDayOfWeek = date.getFirstDayOfWeek();
         int dayOfWeek = 0;
         int day = 1 - firstDayOfWeek;
-        Log.d("asdf", "시간 계산 : "+ (firstDayOfWeek));
-        Log.d("asdf", "시간 계산 : "+ (day));
+        //Log.d("asdf", "시간 계산 : "+ (firstDayOfWeek));
+        //Log.d("asdf", "시간 계산 : "+ (day));
         int loopDay = 0;
         for(int week = 0; week<6; ++week) {
             LinearLayout weeksLayout = WEEKS[week];
             while(dayOfWeek != 7) {
                 if(__days[loopDay] != null) __days[loopDay].setOnClickListener(null);
                 TextView text = (TextView) ((LinearLayout) weeksLayout.getChildAt(dayOfWeek)).getChildAt(0);
-                Log.d("TEST", "createCalendar: 위치 : 줄 = "+week+" / 칸 = " + dayOfWeek);
+                //Log.d("TEST", "createCalendar: 위치 : 줄 = "+week+" / 칸 = " + dayOfWeek);
                 FrameLayout frameLayout = (FrameLayout) ((LinearLayout) weeksLayout.getChildAt(dayOfWeek)).getChildAt(1);
                 frameLayout.removeAllViewsInLayout();
-                Log.d("TEST", "createCalendar: Frame : " + frameLayout);
+                //Log.d("TEST", "createCalendar: Frame : " + frameLayout);
                 if(day < daysMax+1 && day > 0) {
 
                     __days[day-1] = (LinearLayout) weeksLayout.getChildAt(dayOfWeek);
@@ -225,9 +225,6 @@ public class My extends Fragment {
                 int _o = beans[i].getsDay()+firstDayOfWeek-1;
                 parent = WEEKS[Math.abs(_o / 7)];
                 child = (LinearLayout) parent.getChildAt(Math.abs(_o%7));
-                Log.d("Data", "income day : " + beans[i].getsDay());
-                Log.d("Data", "income start Hour : " + beans[i].getsHour());
-                Log.d("Data", "income end Hour : " + beans[i].geteHour());
                 if(beans[i].getsDay() == beans[i].geteDay()) {
                     ((FrameLayout) child.getChildAt(1)).addView(createBar(beans[i].getsHour(), beans[i].getsMin(), beans[i].geteHour(), beans[i].geteMin(), true));
                 } else {

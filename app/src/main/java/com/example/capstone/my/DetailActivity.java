@@ -3,6 +3,7 @@ package com.example.capstone.my;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -77,13 +78,12 @@ public class DetailActivity extends AppCompatActivity {
     }
     private FrameLayout createBar(int startHour, int startMin, int endHour, int endMin, boolean isFree) {
         int __height = ((endHour - startHour)*60) + endMin - startMin;
-        int gap = (startHour*60) + startMin;
-
-        final int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, getResources().getDisplayMetrics());
+        final int gap = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, ((startHour*60) + startMin + 3), getResources().getDisplayMetrics());
+        final int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 25, getResources().getDisplayMetrics());
         final int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, __height, getResources().getDisplayMetrics());
         FrameLayout frameLayout = new FrameLayout(this);
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(width, height);
-        if(gap != 0) params.setMargins(0,gap,0,0);
+        if(gap != 0) params.setMargins(0,gap,20,0);
         frameLayout.setLayoutParams(params);
 
         if(isFree) frameLayout.setBackground(ContextCompat.getDrawable(this, R.drawable.free_bar));

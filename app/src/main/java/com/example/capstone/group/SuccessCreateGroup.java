@@ -1,6 +1,7 @@
 package com.example.capstone.group;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -25,6 +26,12 @@ public class SuccessCreateGroup extends Activity {
 
         invitationCode = (TextView) findViewById(R.id.invitationCode);
         back = (LinearLayout) findViewById(R.id.successNewGroupBack);
+
+        Intent intent = getIntent();
+        String code = intent.getStringExtra("groupCode");
+        if(code != null) {
+            invitationCode.setText(code);
+        }
 
 
         invitationCode.setOnClickListener(new View.OnClickListener() {

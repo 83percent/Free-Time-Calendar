@@ -4,7 +4,7 @@ public class FreeBean {
     private int sYear, sMonth, sDay, sHour, sMin;
     private int eYear, eMonth, eDay, eHour, eMin;
     private int id;
-    private String code;
+    private String code, type;
 
     public void setStart(int[] starts) {
         this.sYear = starts[0];
@@ -35,6 +35,13 @@ public class FreeBean {
         this.eMin = min;
     }
 
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
 
     public void setId(int id) {
         this.id = id;
