@@ -100,13 +100,14 @@ public class SignIn extends AppCompatActivity {
                         Toast.makeText(SignIn.this, "이메일 또는 비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show();
                         break;
                     }
-                    default : { Toast.makeText(SignIn.this, "잠시 후 다시 시도해주세요.", Toast.LENGTH_SHORT).show(); }
+                    default : { Toast.makeText(SignIn.this, "(D)잠시 후 다시 시도해주세요.", Toast.LENGTH_SHORT).show(); }
                 }
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(SignIn.this, "잠시 후 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignIn.this, "(F)잠시 후 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
             }
         });
     }

@@ -8,7 +8,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitConnection {
     private Gson gson = new GsonBuilder().setLenient().create();
-    private static final String baseUrl = "http://10.0.2.2:3001";
+    //private static final String baseUrl = "http://10.0.2.2:3001";
+    private static final String baseUrl = "http://34.84.172.217:3001";
     private Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create(gson))
@@ -20,6 +21,5 @@ public class RetrofitConnection {
     public static RetrofitConnection getInstance() {
         if(instance == null)  { instance = new RetrofitConnection(); }
         return instance;
-
     }
 }

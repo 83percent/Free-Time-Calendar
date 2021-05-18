@@ -24,9 +24,6 @@ public class GroupListElementView extends LinearLayout {
     }
     public void setData(GroupListBean bean) {
         gName.setText(bean.getName());
-        Log.d("ListView", "Member 수 : " + bean.getMemberCount());
-        Log.d("ListView", "Member 들어갈 View : " + gCount1);
-
         gCount1.setText(String.valueOf(bean.getMemberCount()));
         gCount2.setText(String.valueOf(bean.getMemberCount()-1));
         gsCount.setText(String.valueOf(bean.getScheduleCount()));

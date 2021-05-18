@@ -2,6 +2,7 @@
 <FrameLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -11,6 +12,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp">
             <TextView
+                android:id="@+id/groupTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="그룹 명칭이 올 곳"
@@ -49,7 +51,7 @@
                     android:textColor="#aaaaaa"/>
             </LinearLayout>
             <ImageButton
-                android:id="@+id/myMainCreate"
+                android:id="@+id/menuBtn"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_centerVertical="true"
@@ -1065,5 +1067,25 @@
             android:clickable="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/menuWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="#40000000"
+        android:visibility="gone">
+        <FrameLayout
+            android:id="@+id/menuCloser"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3" />
+        <FrameLayout
+            android:id="@+id/menuFragment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:clickable="false"
+            android:background="#ffffff"/>
     </LinearLayout>
 </FrameLayout>

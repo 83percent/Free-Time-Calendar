@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -18,14 +20,21 @@ import com.example.capstone.lib.Date;
 import com.example.capstone.my.DetailActivity;
 import com.example.capstone.my.NewBase;
 
+import org.w3c.dom.Text;
+
 public class GroupMainCalendar extends AppCompatActivity {
     // View
     private ImageButton menuBtn;
     private LinearLayout weeksWrapper;
     private LinearLayout[] WEEKS = new LinearLayout[6];
     private Date date = null;
+    private TextView year, month, groupTitle;
 
-    private TextView year, month;
+    // menu
+    private LinearLayout menuWrapper = null;
+    private FrameLayout menuFragment, menuCloser;
+    private Animation menuOpenAnim, menuCloseAnim;
+    private GroupMenu groupMenu;
 
     // Calendar
     private LinearLayout[] __days = new LinearLayout[42];
@@ -47,6 +56,8 @@ public class GroupMainCalendar extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.group_calendar);
+
+
         date = new Date();
         TextView[] overviewMonthBtn = new TextView[12];
         Integer[] monthIDs = {R.id.month1,R.id.month2,R.id.month3, R.id.month4, R.id.month5, R.id.month6
@@ -55,8 +66,10 @@ public class GroupMainCalendar extends AppCompatActivity {
         year = (TextView) findViewById(R.id.myCalYear);
         month = (TextView) findViewById(R.id.myCalMonth);
 
-        weeksWrapper = (LinearLayout) findViewById(R.id.weeksWrapper);
+        // Menu
+        groupMenu = new GroupMenu();
 
+        weeksWrapper = (LinearLayout) findViewById(R.id.weeksWrapper);
         overviewOnBtn = (LinearLayout) findViewById(R.id.calendarOverviewBtn);
         overviewWrapper = (LinearLayout) findViewById(R.id.calendarOverviewWrapper);
         overviewCloser = (FrameLayout) findViewById(R.id.calendarOverviewCloser);
@@ -69,6 +82,12 @@ public class GroupMainCalendar extends AppCompatActivity {
         year.setText(""+__year);
         month.setText(""+__month);
 
+
+        Intent intent = getIntent();
+        if(intent.getStringExtra("groupName") != null) {
+            groupTitle = (TextView) findViewById(R.id.groupTitle);
+            groupTitle.setText(intent.getStringExtra("groupName"));
+        }
 
         // OverView
         overviewYearMinus = (ImageButton) findViewById(R.id.overviewYearMinus);
@@ -128,11 +147,11 @@ public class GroupMainCalendar extends AppCompatActivity {
             }
         });
 
-        menuBtn = (ImageButton) findViewById(R.id.myMainCreate);
+        menuBtn = (ImageButton) findViewById(R.id.menuBtn);
         menuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                menuToggle(true);
             }
         });
     }
@@ -183,4 +202,42 @@ public class GroupMainCalendar extends AppCompatActivity {
         createCalendar();
     }
 
+    // Anim
+    private void menuToggle(boolean toggle) {
+        if(menuWrapper == null) {
+            menuWrapper = (LinearLayout) findViewById(R.id.menuWrapper);
+            menuFragment = (FrameLayout) findViewById(R.id.menuFragment);
+            menuCloser = (FrameLayout) findViewById(R.id.menuCloser);
+            menuCloser.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    menuToggle(false);
+                }
+            });
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.menuFragment, groupMenu).commit();
+
+            menuOpenAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.menu_open_slide);
+            menuCloseAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.menu_close_slide);
+            menuCloseAnim.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) { }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    menuWrapper.setVisibility(View.GONE);
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) { }
+            });
+        }
+        if(toggle) {
+            menuFragment.startAnimation(menuOpenAnim);
+            menuWrapper.setVisibility(View.VISIBLE);
+        } else {
+            menuFragment.startAnimation(menuCloseAnim);
+        }
+
+    }
 }

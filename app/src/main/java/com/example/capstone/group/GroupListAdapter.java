@@ -44,8 +44,6 @@ public class GroupListAdapter extends BaseAdapter {
             } else {
                 elementView = (GroupListElementView) convertView;
             }
-            Log.d("ListView", "넣으려는 데이터 index : " + position);
-            Log.d("ListView", "넣으려는 데이터 name : " + listBeans[position].getName());
             elementView.setData(listBeans[position]);
             return elementView;
         } catch(Exception e) {
