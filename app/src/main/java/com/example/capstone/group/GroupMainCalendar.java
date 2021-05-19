@@ -51,7 +51,7 @@ public class GroupMainCalendar extends AppCompatActivity {
     private int __newYear, __newMonth;
     private MainBaseActivity activity;
     private TextView __onMonthView;
-
+    private String groupID;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,9 +65,6 @@ public class GroupMainCalendar extends AppCompatActivity {
 
         year = (TextView) findViewById(R.id.myCalYear);
         month = (TextView) findViewById(R.id.myCalMonth);
-
-        // Menu
-        groupMenu = new GroupMenu();
 
         weeksWrapper = (LinearLayout) findViewById(R.id.weeksWrapper);
         overviewOnBtn = (LinearLayout) findViewById(R.id.calendarOverviewBtn);
@@ -87,6 +84,7 @@ public class GroupMainCalendar extends AppCompatActivity {
         if(intent.getStringExtra("groupName") != null) {
             groupTitle = (TextView) findViewById(R.id.groupTitle);
             groupTitle.setText(intent.getStringExtra("groupName"));
+            groupID = intent.getStringExtra("groupID");
         }
 
         // OverView
@@ -208,6 +206,9 @@ public class GroupMainCalendar extends AppCompatActivity {
             menuWrapper = (LinearLayout) findViewById(R.id.menuWrapper);
             menuFragment = (FrameLayout) findViewById(R.id.menuFragment);
             menuCloser = (FrameLayout) findViewById(R.id.menuCloser);
+            // Menu
+            groupMenu = new GroupMenu(this.groupID);
+
             menuCloser.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -2,6 +2,7 @@ package com.example.capstone.connect;
 
 import com.example.capstone.bean.CreateGroupBean;
 import com.example.capstone.bean.GroupListBean;
+import com.example.capstone.bean.GroupMemberBean;
 import com.example.capstone.bean.SignInBean;
 import com.example.capstone.bean.SignUpBean;
 import com.example.capstone.bean.TimeBean;
@@ -28,4 +29,7 @@ public interface HTTPService {
 
     @GET("/group/list/{id}")
     Call<GroupListBean[]> getGroupList(@Path("id") String id);
+
+    @GET("group/member/{GroupCode}")
+    Call<GroupMemberBean[]> getGroupMember(@Path("GroupCode") String code);
 }

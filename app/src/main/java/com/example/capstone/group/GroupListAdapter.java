@@ -15,8 +15,6 @@ public class GroupListAdapter extends BaseAdapter {
     public GroupListAdapter(Context context, GroupListBean[] listBeans) {
         this.context = context;
         this.listBeans = listBeans;
-
-        Log.d("ListView", "GroupListBean[0] : " + listBeans[0].getName());
     }
 
     @Override

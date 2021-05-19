@@ -144,10 +144,7 @@ public class Group extends Fragment {
             public void onResponse(Call<GroupListBean[]> call, Response<GroupListBean[]> response) {
                 if(response.code() == 200) {
                     GroupListBean[] beans = response.body();
-
                     adapter = new GroupListAdapter(getActivity(), beans);
-                    Log.d("List View", "adapter : " + adapter.getCount());
-                    Log.d("List View", "list view : " + groupListView);
                     groupListView.setAdapter(adapter);
                 } else {
 
