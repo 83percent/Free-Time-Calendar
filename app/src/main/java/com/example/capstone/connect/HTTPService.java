@@ -3,11 +3,11 @@ package com.example.capstone.connect;
 import com.example.capstone.bean.CreateGroupBean;
 import com.example.capstone.bean.GroupListBean;
 import com.example.capstone.bean.GroupMemberBean;
+import com.example.capstone.bean.IDReturnBean;
 import com.example.capstone.bean.SignInBean;
 import com.example.capstone.bean.SignUpBean;
 import com.example.capstone.bean.TimeBean;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -30,6 +30,11 @@ public interface HTTPService {
     @GET("/group/list/{id}")
     Call<GroupListBean[]> getGroupList(@Path("id") String id);
 
-    @GET("group/member/{GroupCode}")
+    // 그룹 참여자 목록 받기
+    @GET("/group/member/{GroupCode}")
     Call<GroupMemberBean[]> getGroupMember(@Path("GroupCode") String code);
+
+    // 그룹 참여 신청
+    @POST("/group/apply/{GroupCode}")
+    Call<Integer> sendApplyGroup(@Path("GroupCode") String code, @Body IDReturnBean bean);
 }
