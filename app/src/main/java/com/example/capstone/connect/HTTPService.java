@@ -1,6 +1,7 @@
 package com.example.capstone.connect;
 
 import com.example.capstone.bean.CreateGroupBean;
+import com.example.capstone.bean.GroupAdminControlBean;
 import com.example.capstone.bean.GroupListBean;
 import com.example.capstone.bean.GroupMemberBean;
 import com.example.capstone.bean.IDReturnBean;
@@ -46,7 +47,13 @@ public interface HTTPService {
     @POST("/group/apply/{GroupCode}")
     Call<Integer> sendApplyGroup(@Path("GroupCode") String code, @Body IDReturnBean bean);
 
-    // 그룹 admin 가져오기
+    // 그룹 지원자 목록 가져오기
     @GET("/group/apply/list/{GroupCode}")
     Call<GroupMemberBean[]> getApplierList(@Path("GroupCode") String code);
+
+    @POST("/group/apply/list/{GroupCode}")
+    Call<Integer> acceptApplier(@Path("GroupCode") String code, @Body IDReturnBean bean);
+
+    @HTTP(method= "DELETE", path="/group/apply/list/{GroupCode}", hasBody= true)
+    Call<Integer> rejectApplier(@Path("GroupCode") String code, @Body IDReturnBean bean);
 }

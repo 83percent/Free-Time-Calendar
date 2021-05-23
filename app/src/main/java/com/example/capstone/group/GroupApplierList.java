@@ -3,6 +3,7 @@ package com.example.capstone.group;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -43,8 +44,7 @@ public class GroupApplierList extends AppCompatActivity {
 
         SharedPreferences pref = getSharedPreferences("FreeTime",MODE_PRIVATE);
         this.id = pref.getString("id", null);
-
-        if(id == null) {
+        if(this.id != null) {
             if(retrofitConnection == null) retrofitConnection = RetrofitConnection.getInstance();
             Call<GroupMemberBean[]> call = retrofitConnection.server.getApplierList(code);
             call.enqueue(new Callback<GroupMemberBean[]>() {
@@ -52,12 +52,11 @@ public class GroupApplierList extends AppCompatActivity {
                 public void onResponse(Call<GroupMemberBean[]> call, Response<GroupMemberBean[]> response) {
                     if(response.code() == 200) {
                         if(admin != null) {
-                            GroupApplierListAdapter adapter = new GroupApplierListAdapter(getApplicationContext(), response.body(),  id.equals(admin));
+                            GroupApplierListAdapter adapter = new GroupApplierListAdapter(getApplicationContext(), response.body(),  id.equals(admin), code);
                             listView.setAdapter(adapter);
                         } else {
-                            GroupApplierListAdapter adapter = new GroupApplierListAdapter(getApplicationContext(), response.body(),  false);
+                            GroupApplierListAdapter adapter = new GroupApplierListAdapter(getApplicationContext(), response.body(),  false, code);
                             listView.setAdapter(adapter);
-
                         }
                     }
                 }

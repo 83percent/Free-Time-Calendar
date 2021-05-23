@@ -13,11 +13,13 @@ public class GroupApplierListAdapter extends BaseAdapter {
     private Context context;
     private GroupMemberBean[] listBeans;
     private boolean isAdmin;
+    private String groupCode;
 
-    public GroupApplierListAdapter(Context context, GroupMemberBean[] listBeans, boolean isAdmin) {
+    public GroupApplierListAdapter(Context context, GroupMemberBean[] listBeans, boolean isAdmin, String groupCode) {
         this.context = context;
         this.listBeans = listBeans;
         this.isAdmin = isAdmin;
+        this.groupCode = groupCode;
     }
 
     @Override
@@ -42,7 +44,7 @@ public class GroupApplierListAdapter extends BaseAdapter {
             if(isAdmin) {
                 GroupApplierListElementForAdmin elementView;
                 if(convertView == null) {
-                    elementView = new GroupApplierListElementForAdmin(this.context);
+                    elementView = new GroupApplierListElementForAdmin(this.context, listBeans[position].getId(), groupCode);
                 } else {
                     elementView = (GroupApplierListElementForAdmin) convertView;
                 }
