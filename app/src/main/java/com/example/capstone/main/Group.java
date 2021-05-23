@@ -102,13 +102,14 @@ public class Group extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent groupIntent = adapter.getItemIntent(position);
-                startActivity(groupIntent);
+                startActivityForResult(groupIntent, 2000);
             }
         });
-
         createGroupList();
         return rootView;
     }
+
+    // 추가, 입장 매뉴 토글
     public void toggleAddGroupOption(boolean toggle) {
         if (toggle) {
             if (groupAddOptionWrapper.getVisibility() == View.GONE)
@@ -123,6 +124,8 @@ public class Group extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        // 그룹 생성 성공 여부 파악
         if(requestCode == 8081 && resultCode == activity.RESULT_OK) {
             if(data.getBooleanExtra("isCreate", false)) {
                 String createGroupCode = data.getStringExtra("groupCode");
@@ -132,6 +135,12 @@ public class Group extends Fragment {
                     startActivity(intent);
                 }
             }
+        }
+
+        // 새로고침을 해야하는 상황 파악
+        if(requestCode == 2000 && resultCode == activity.RESULT_OK) {
+            Log.d("결과", "onActivityResult: 새로고침 걸림" );
+            createGroupList();
         }
     }
 
@@ -157,6 +166,8 @@ public class Group extends Fragment {
                 t.printStackTrace();
             }
         });
-
     }
+
+
+    // 새로고침 트리거
 }

@@ -37,7 +37,6 @@ public class Setting extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         if(activity == null) activity = (MainBaseActivity) getActivity();
-
     }
     @Override
     public void onDetach() {

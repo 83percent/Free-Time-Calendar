@@ -1,7 +1,7 @@
 package com.example.capstone.bean;
 
 public class GroupListBean {
-    private String id, name;
+    private String id, name, admin;
     private int scheduleCount, memberCount;
 
     public void setId(String id) {
@@ -31,5 +31,13 @@ public class GroupListBean {
 
     public int getMemberCount() {
         return memberCount;
+    }
+
+    public void setAdmin(String admin) {
+        this.admin = admin;
+    }
+
+    public String getAdmin() {
+        return admin;
     }
 }

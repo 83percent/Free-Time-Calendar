@@ -58,6 +58,8 @@
             android:background="@drawable/ic_baseline_keyboard_arrow_right_24" />
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/applierListBtn"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -110,6 +112,7 @@
         android:background="@drawable/border_top"
         android:gravity="right">
         <LinearLayout
+            android:id="@+id/outOfGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -117,6 +120,7 @@
             android:paddingVertical="10dp"
             android:paddingHorizontal="20dp">
             <TextView
+                android:layout_marginRight="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="나가기"/>

@@ -1,6 +1,7 @@
 package com.example.capstone.group;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -52,6 +53,7 @@ public class GroupMainCalendar extends AppCompatActivity {
     private MainBaseActivity activity;
     private TextView __onMonthView;
     private String groupID;
+    private String admin;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +87,7 @@ public class GroupMainCalendar extends AppCompatActivity {
             groupTitle = (TextView) findViewById(R.id.groupTitle);
             groupTitle.setText(intent.getStringExtra("groupName"));
             groupID = intent.getStringExtra("groupID");
+            admin = intent.getStringExtra("admin");
         }
 
         // OverView
@@ -239,6 +242,14 @@ public class GroupMainCalendar extends AppCompatActivity {
         } else {
             menuFragment.startAnimation(menuCloseAnim);
         }
-
     }
+    private SharedPreferences pref = null;
+    public String getUserId() {
+        if(pref == null) pref = getSharedPreferences("FreeTime" , MODE_PRIVATE);
+        return pref.getString("id", null);
+    }
+    public String getAdmin() {
+        return this.admin;
+    }
+
 }

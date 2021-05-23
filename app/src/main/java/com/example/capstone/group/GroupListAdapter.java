@@ -53,6 +53,7 @@ public class GroupListAdapter extends BaseAdapter {
         Intent resultIntent = new Intent(context, GroupMainCalendar.class);
         resultIntent.putExtra("groupID", listBeans[position].getId());
         resultIntent.putExtra("groupName", listBeans[position].getName());
+        resultIntent.putExtra("admin", listBeans[position].getAdmin());
 
         return resultIntent;
     }

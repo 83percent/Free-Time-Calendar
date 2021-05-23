@@ -2,7 +2,8 @@
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#ffffff">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,51 +14,119 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingHorizontal="40dp">
+            android:paddingHorizontal="40dp"
+            android:paddingBottom="20dp">
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Setting"
+                android:text="설정"
                 android:textSize="25sp"
-                android:fontFamily="@font/montserrat"
                 android:textColor="#000000"/>
         </LinearLayout>
         <!-- Article List -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="30dp">
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="데이터"
+                android:textFontWeight="500"
+                android:paddingHorizontal="40dp"
+                android:textColor="#000000"/>
             <LinearLayout
+                android:id="@+id/syncBtn"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#888888"/>
-            <LinearLayout
-                android:id="@+id/signOut"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="45dp"
                 android:orientation="horizontal"
+                android:background="@drawable/group_list"
                 android:gravity="center_vertical"
                 android:paddingLeft="35dp">
                 <FrameLayout
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/ic_baseline_lock_open_24"
-                    android:backgroundTint="#ff2244"/>
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/ic_outline_person_24"
+                    android:backgroundTint="#000000"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sign Out"
+                    android:text="동기화"
                     android:paddingLeft="10dp"
-                    android:fontFamily="@font/montserrat"
-                    android:textSize="17sp"
-                    android:textColor="#ff2244"/>
+                    android:textSize="15sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="계정"
+                android:textFontWeight="500"
+                android:paddingHorizontal="40dp"
+                android:textColor="#000000"/>
+            <LinearLayout
+                android:id="@+id/chName"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal"
+                android:background="@drawable/group_list"
+                android:gravity="center_vertical"
+                android:paddingLeft="35dp">
+                <FrameLayout
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/ic_outline_person_24"
+                    android:backgroundTint="#000000"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="이름 변경"
+                    android:paddingLeft="10dp"
+                    android:textSize="15sp"
+                    android:textColor="#000000"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/chPassword"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#888888"/>
+                android:layout_height="45dp"
+                android:orientation="horizontal"
+                android:background="@drawable/group_list"
+                android:gravity="center_vertical"
+                android:paddingLeft="35dp">
+                <FrameLayout
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/ic_baseline_lock_open_24"
+                    android:backgroundTint="#000000"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="비밀번호 변경"
+                    android:paddingLeft="10dp"
+                    android:textSize="15sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/signOut"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal"
+                android:background="@drawable/group_list"
+                android:gravity="center_vertical"
+                android:paddingLeft="35dp">
+                <FrameLayout
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/ic_baseline_lock_open_24"
+                    android:backgroundTint="#000000"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="로그아웃"
+                    android:paddingLeft="10dp"
+                    android:textSize="15sp"
+                    android:textColor="#000000"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
