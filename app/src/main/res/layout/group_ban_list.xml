@@ -22,14 +22,13 @@
                     android:orientation="horizontal"
                     android:paddingHorizontal="15dp"
                     android:paddingBottom="4dp">
-
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_weight="1"
                         android:fontFamily="@font/montserrat"
-                        android:text="참가 대기 목록"
+                        android:text="차단된 계정"
                         android:textColor="#000000"
                         android:textSize="25sp" />
 
@@ -55,24 +54,24 @@
         android:background="@drawable/border_top"
         android:gravity="center_vertical">
         <LinearLayout
-            android:id="@+id/moveBanList"
+            android:id="@+id/moveApplierListBtn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:layout_alignParentBottom="true"
-            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
             android:gravity="center_vertical"
-            android:layout_alignParentRight="true">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="차단된 계정"
-                android:textColor="#555555"/>
+            android:layout_alignParentLeft="true">
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:background="@drawable/ic_baseline_keyboard_arrow_right_24"
+                android:background="@drawable/ic_baseline_keyboard_arrow_left_24"
                 android:backgroundTint="#555555"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="참가 대기 목록"
+                android:textColor="#555555"/>
         </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

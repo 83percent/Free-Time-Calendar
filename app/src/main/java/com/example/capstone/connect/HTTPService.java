@@ -2,9 +2,13 @@ package com.example.capstone.connect;
 
 import com.example.capstone.bean.CreateGroupBean;
 import com.example.capstone.bean.GroupAdminControlBean;
+import com.example.capstone.bean.GroupFreeBean;
 import com.example.capstone.bean.GroupListBean;
 import com.example.capstone.bean.GroupMemberBean;
+import com.example.capstone.bean.GroupScheduleBean;
+import com.example.capstone.bean.GroupVoteBean;
 import com.example.capstone.bean.IDReturnBean;
+import com.example.capstone.bean.RequestDateBean;
 import com.example.capstone.bean.SignInBean;
 import com.example.capstone.bean.SignUpBean;
 import com.example.capstone.bean.TimeBean;
@@ -56,4 +60,31 @@ public interface HTTPService {
 
     @HTTP(method= "DELETE", path="/group/apply/list/{GroupCode}", hasBody= true)
     Call<Integer> rejectApplier(@Path("GroupCode") String code, @Body IDReturnBean bean);
+
+    /*
+        ====================
+                ban
+        ====================
+     */
+
+    @GET("/group/ban/list/{GroupCode}")
+    Call<GroupMemberBean[]> getBanList(@Path("GroupCode") String code);
+
+    @POST("/group/ban/list/{GroupCode}")
+    Call<Integer> addBan(@Path("GroupCode") String code, @Body IDReturnBean bean);
+
+    @HTTP(method= "DELETE", path="/group/ban/list/{GroupCode}", hasBody= true)
+    Call<Integer> deleteBan(@Path("GroupCode") String code, @Body IDReturnBean bean);
+
+    /*
+        ====================
+           Group Free & Schedule
+        ====================
+     */
+    @POST("/group/free/{GroupCode}")
+    Call<GroupFreeBean[]> getGroupFree(@Path("GroupCode")String code, @Body RequestDateBean bean);
+
+    @POST("/group/vote/{GroupCode}")
+    Call<Boolean> sendVote(@Path("GroupCode")String code, @Body GroupVoteBean bean);
+
 }

@@ -54,7 +54,7 @@ public class GroupListAdapter extends BaseAdapter {
         resultIntent.putExtra("groupID", listBeans[position].getId());
         resultIntent.putExtra("groupName", listBeans[position].getName());
         resultIntent.putExtra("admin", listBeans[position].getAdmin());
-
+        resultIntent.putExtra("memberCount", listBeans[position].getMemberCount());
         return resultIntent;
     }
 }

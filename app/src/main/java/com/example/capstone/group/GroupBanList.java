@@ -3,7 +3,6 @@ package com.example.capstone.group;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -21,10 +20,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class GroupApplierList extends AppCompatActivity {
+public class GroupBanList extends AppCompatActivity {
     private ImageButton backBtn;
     private ListView listView;
-    private LinearLayout moveBanList;
+    private LinearLayout moveApplierListBtn;
 
     // Field
     private String admin, code, id;
@@ -34,11 +33,12 @@ public class GroupApplierList extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.group_apply_list);
+        setContentView(R.layout.group_ban_list);
 
+
+        moveApplierListBtn = (LinearLayout) findViewById(R.id.moveApplierListBtn);
         backBtn = (ImageButton) findViewById(R.id.backBtn);
         listView = (ListView) findViewById(R.id.applyListView);
-        moveBanList = (LinearLayout) findViewById(R.id.moveBanList);
 
         Intent dataIntent = getIntent();
         this.admin = dataIntent.getStringExtra("admin");
@@ -48,7 +48,7 @@ public class GroupApplierList extends AppCompatActivity {
         this.id = pref.getString("id", null);
         if(this.id != null) {
             if(retrofitConnection == null) retrofitConnection = RetrofitConnection.getInstance();
-            Call<GroupMemberBean[]> call = retrofitConnection.server.getApplierList(code);
+            Call<GroupMemberBean[]> call = retrofitConnection.server.getBanList(code);
             call.enqueue(new Callback<GroupMemberBean[]>() {
                 @Override
                 public void onResponse(Call<GroupMemberBean[]> call, Response<GroupMemberBean[]> response) {
@@ -71,21 +71,17 @@ public class GroupApplierList extends AppCompatActivity {
             Toast.makeText(this, "오류가 발생했습니다.", Toast.LENGTH_SHORT).show();
         }
 
-        moveBanList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), GroupBanList.class);
-                intent.putExtra("admin", admin);
-                intent.putExtra("groupCode", code);
-                startActivity(intent);
-            }
-        });
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-
+        moveApplierListBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     } // onCreate
 }

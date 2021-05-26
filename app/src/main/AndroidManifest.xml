@@ -17,7 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".user.MainBaseActivity2"/>
         <activity android:name=".group.AddNewGroup"/>
+        <activity android:name=".group.GroupDayDetail"/>
         <activity android:name=".group.InputInvitation"/>
         <activity android:name=".group.SuccessEnterInvitation"/>
         <activity android:name=".group.SuccessCreateGroup"/>
@@ -28,6 +30,8 @@
         <activity android:name=".my.NewBase"/>
         <activity android:name=".group.GroupMainCalendar"/>
         <activity android:name=".group.GroupApplierList"/>
+        <activity android:name=".group.GroupBanList"/>
+        <activity android:name=".group.GroupNewSchedule"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

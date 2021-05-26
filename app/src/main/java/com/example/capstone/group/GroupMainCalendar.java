@@ -52,8 +52,10 @@ public class GroupMainCalendar extends AppCompatActivity {
     private int __newYear, __newMonth;
     private MainBaseActivity activity;
     private TextView __onMonthView;
-    private String groupID;
+    private String groupID, groupName;
     private String admin;
+    private boolean isOpenOption = false;
+    private int memberCount = 0;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,9 +87,11 @@ public class GroupMainCalendar extends AppCompatActivity {
         Intent intent = getIntent();
         if(intent.getStringExtra("groupName") != null) {
             groupTitle = (TextView) findViewById(R.id.groupTitle);
-            groupTitle.setText(intent.getStringExtra("groupName"));
+            groupName = intent.getStringExtra("groupName");
+            groupTitle.setText(groupName);
             groupID = intent.getStringExtra("groupID");
             admin = intent.getStringExtra("admin");
+            memberCount = intent.getIntExtra("memberCount", 0);
         }
 
         // OverView
@@ -181,10 +185,13 @@ public class GroupMainCalendar extends AppCompatActivity {
                     __days[day-1].setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), GroupDayDetail.class);
                             intent.putExtra("year", __year);
                             intent.putExtra("month", __month);
                             intent.putExtra("day", v.getTag().toString());
+                            intent.putExtra("groupCode", groupID);
+                            intent.putExtra("groupName", groupName);
+                            intent.putExtra("memberCount", memberCount);
                             startActivity(intent);
                         }
                     });
@@ -242,6 +249,7 @@ public class GroupMainCalendar extends AppCompatActivity {
         } else {
             menuFragment.startAnimation(menuCloseAnim);
         }
+        isOpenOption = toggle;
     }
     private SharedPreferences pref = null;
     public String getUserId() {
@@ -252,4 +260,12 @@ public class GroupMainCalendar extends AppCompatActivity {
         return this.admin;
     }
 
+    @Override
+    public void onBackPressed() {
+        if(isOpenOption) {
+            menuToggle(false);
+        } else {
+            finish();
+        }
+    }
 }

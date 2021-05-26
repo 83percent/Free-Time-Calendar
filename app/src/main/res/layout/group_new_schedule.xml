@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -35,12 +40,12 @@
                     android:background="#888888"
                     android:layout_marginHorizontal="10dp"/>
                 <TextView
+                    android:id="@+id/groupName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Group Name"
-                    android:textSize="15sp"
                     android:fontFamily="@font/montserrat"
-                    android:textColor="#888888"/>
+                    android:textColor="#888888"
+                    android:textSize="15sp" />
             </LinearLayout>
             <ImageButton
                 android:layout_width="30dp"
@@ -71,6 +76,7 @@
                     android:fontFamily="@font/montserrat"
                     android:textColor="#000000"/>
                 <EditText
+                    android:id="@+id/scheduleName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
@@ -132,6 +138,7 @@
                                 android:orientation="horizontal"
                                 android:gravity="center">
                                 <EditText
+                                    android:id="@+id/startYear"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -145,6 +152,7 @@
                                     android:background="#aaa"
                                     android:layout_marginHorizontal="10dp"/>
                                 <EditText
+                                    android:id="@+id/startMonth"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -158,6 +166,7 @@
                                     android:background="#aaa"
                                     android:layout_marginHorizontal="10dp"/>
                                 <EditText
+                                    android:id="@+id/startDay"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -172,6 +181,7 @@
                                 android:orientation="horizontal"
                                 android:gravity="center">
                                 <EditText
+                                    android:id="@+id/startHour"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -196,6 +206,7 @@
                                         android:background="@drawable/small_dot"/>
                                 </LinearLayout>
                                 <EditText
+                                    android:id="@+id/startMin"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -239,6 +250,7 @@
                                 android:orientation="horizontal"
                                 android:gravity="center">
                                 <EditText
+                                    android:id="@+id/endYear"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -252,6 +264,7 @@
                                     android:background="#aaa"
                                     android:layout_marginHorizontal="10dp"/>
                                 <EditText
+                                    android:id="@+id/endMonth"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -265,6 +278,7 @@
                                     android:background="#aaa"
                                     android:layout_marginHorizontal="10dp"/>
                                 <EditText
+                                    android:id="@+id/endDay"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -279,6 +293,7 @@
                                 android:orientation="horizontal"
                                 android:gravity="center">
                                 <EditText
+                                    android:id="@+id/endHour"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -303,6 +318,7 @@
                                         android:background="@drawable/small_dot"/>
                                 </LinearLayout>
                                 <EditText
+                                    android:id="@+id/endMin"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -338,13 +354,14 @@
                     android:paddingVertical="5dp"
                     android:layout_marginTop="5dp">
                     <EditText
+                        android:id="@+id/minLength"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
+                        android:inputType="number"
                         android:fontFamily="@font/montserrat"
                         android:hint="00"
                         android:textSize="22sp"
-                        android:inputType="textEmailAddress"
                         android:textFontWeight="300"
                         android:layout_centerInParent="true" />
                 </RelativeLayout>
@@ -356,8 +373,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="15dp"
+        android:paddingTop="30dp"
         android:paddingBottom="20dp">
         <RelativeLayout
+            android:id="@+id/sendVote"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/blue_btn">
@@ -372,3 +391,4 @@
         </RelativeLayout>
     </RelativeLayout>
 </LinearLayout>
+</ScrollView>

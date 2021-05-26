@@ -87,8 +87,8 @@ public class NewFree extends Fragment {
                 pass = false;
                 break;
             }
-            __starts[i] = Integer.parseInt(starts[i].getText().toString());
-            __ends[i] = Integer.parseInt(ends[i].getText().toString());
+            __starts[i] = Integer.parseInt(s);
+            __ends[i] = Integer.parseInt(e);
         }
         if(!pass) {
             Toast.makeText(activity, "시간 정보를 입력해주세요", Toast.LENGTH_SHORT).show();
