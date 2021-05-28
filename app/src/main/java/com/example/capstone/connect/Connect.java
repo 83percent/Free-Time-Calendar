@@ -15,7 +15,8 @@ import java.util.Arrays;
 
 public class Connect {
     //protected final String SERVER = "http://10.0.2.2:3001";
-    protected final String SERVER = "http://34.84.172.217:3001";
+    //protected final String SERVER = "http://34.84.172.217:3001";
+    protected final String SERVER = null;
     private final String[] __methods = {"GET","POST","DELETE","PUT","PATCH"};
     private ResponseBean responseBean = null;
 

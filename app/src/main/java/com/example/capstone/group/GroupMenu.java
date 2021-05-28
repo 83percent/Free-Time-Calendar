@@ -27,7 +27,7 @@ import retrofit2.Response;
 public class GroupMenu extends Fragment {
     // View
     private ListView memberListView;
-    private LinearLayout outOfGroup, applierListBtn;
+    private LinearLayout outOfGroup, applierListBtn, voteListBtn;
     private RetrofitConnection retrofitConnection = RetrofitConnection.getInstance();
 
     // Field
@@ -52,6 +52,7 @@ public class GroupMenu extends Fragment {
         final ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.group_menu, container, false);
         memberListView = (ListView) rootView.findViewById(R.id.memberListView);
         outOfGroup = (LinearLayout) rootView.findViewById(R.id.outOfGroup);
+        voteListBtn = (LinearLayout) rootView.findViewById(R.id.voteListBtn);
         applierListBtn = (LinearLayout) rootView.findViewById(R.id.applierListBtn);
 
         getGroupList(groupCode); // 참여자 목록 생성
@@ -90,7 +91,14 @@ public class GroupMenu extends Fragment {
                 });
             }
         }); // OutOfGroup onClick
-
+        voteListBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), VoteList.class);
+                intent.putExtra("groupCode", groupCode);
+                startActivity(intent);
+            }
+        });
         applierListBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

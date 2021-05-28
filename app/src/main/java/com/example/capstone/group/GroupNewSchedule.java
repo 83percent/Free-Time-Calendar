@@ -3,6 +3,7 @@ package com.example.capstone.group;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -24,7 +25,7 @@ import retrofit2.Response;
 public class GroupNewSchedule extends AppCompatActivity {
     // View
     private TextView groupNameFrame;
-    private EditText starts[] = new EditText[5], ends[] = new EditText[5], scheduleName, minLength;
+    private EditText starts[] = new EditText[5], ends[] = new EditText[5], scheduleName, minLength, memoInput;
     private int[] startIDs = {R.id.startYear, R.id.startMonth, R.id.startDay, R.id.startHour, R.id.startMin};
     private int[] endIDs = {R.id.endYear, R.id.endMonth, R.id.endDay, R.id.endHour, R.id.endMin};
     private int[] todays = new int[3];
@@ -43,6 +44,7 @@ public class GroupNewSchedule extends AppCompatActivity {
         this.scheduleName = (EditText) findViewById(R.id.scheduleName);
         this.minLength = (EditText) findViewById(R.id.minLength);
         this.sendVoteBtn = (RelativeLayout) findViewById(R.id.sendVote);
+        this.memoInput = (EditText) findViewById(R.id.memoInput);
 
         for(int i=0; i<5; ++i) {
             starts[i] = (EditText) findViewById(startIDs[i]);
@@ -85,18 +87,47 @@ public class GroupNewSchedule extends AppCompatActivity {
                 if(retrofitConnection == null) retrofitConnection = RetrofitConnection.getInstance();
                 GroupVoteBean bean = getBean();
                 if(bean != null) {
-                    Call<Boolean> call = retrofitConnection.server.sendVote(groupCode, bean);
-                    call.enqueue(new Callback<Boolean>() {
+                    Call<GroupVoteBean> call = retrofitConnection.server.addVote(groupCode, bean);
+                    call.enqueue(new Callback<GroupVoteBean>() {
                         @Override
-                        public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                        public void onResponse(Call<GroupVoteBean> call, Response<GroupVoteBean> response) {
                             if(response.code() == 200) {
                                 // 설명 부분 추가해서 전송
                                 // 투표로 이동하는 코드
                                 // 투표 화면에 필요한 정보 아직 모르겠음 내일 확인해보자
+
+                                /*
+                                    필요한 데이터
+                                    vote ID
+                                    vote Name
+                                    start
+                                    end
+                                    memo
+                                 */
+                                GroupVoteBean bean = response.body();
+                                Log.d("결과물", "_id : " + bean.get_id() );
+                                Log.d("결과물", "GroupCode : " + bean.getGroupCode());
+                                Log.d("결과물", "agree : " + bean.getAgree());
+                                Log.d("결과물", "name : " + bean.getName() );
+                                Log.d("결과물", "end : " + bean.getStart() );
+                                Log.d("결과물", "start : " + bean.getEnd() );
+                                Log.d("결과물", "len : " + bean.getMinLength() );
+                                Log.d("결과물", "reg_id : " + bean.getReg_id() );
+
+                                Intent intent = new Intent(getApplicationContext(), VoteActivity.class);
+                                intent.putExtra("voteCode", bean.get_id());
+                                intent.putExtra("voteName", bean.getName());
+                                intent.putExtra("agree",bean.getAgree());
+                                intent.putExtra("start", bean.getStart());
+                                intent.putExtra("end", bean.getEnd());
+                                intent.putExtra("memo", bean.getMemo());
+
+                                finish();
+                                startActivity(intent);
                             }
                         }
                         @Override
-                        public void onFailure(Call<Boolean> call, Throwable t) {
+                        public void onFailure(Call<GroupVoteBean> call, Throwable t) {
                             Toast.makeText(getApplicationContext(), "오류가 발생했습니다.", Toast.LENGTH_SHORT).show();
                         }
                     });
@@ -209,6 +240,7 @@ public class GroupNewSchedule extends AppCompatActivity {
             bean.setEnd(__ends);
             bean.setMinLength(this.minLength.getText().toString());
             bean.setReg_id(id);
+            bean.setMemo(this.memoInput.getText().toString());
             return bean;
         }
 

@@ -20,15 +20,31 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
                 android:text="Vote"
-                android:textColor="#0177FC"
+                android:textColor="#888888"
                 android:textFontWeight="500"
-                android:textSize="38sp" />
+                android:textSize="15sp" />
             <TextView
+                android:id="@+id/voteNameFrame"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Schedule Name"
-                android:textSize="15sp"
-                android:textColor="#888888"/>
+                android:textColor="#0177FC"
+                android:textSize="30sp" />
+            <TextView
+                android:id="@+id/dateFrame"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:textSize="13sp"
+                android:text="2021-05-27 13:00 ~ 2021-05-27 18:00"/>
+            <TextView
+                android:id="@+id/memoFrame"
+                android:paddingHorizontal="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:text="adsfas asdijldkasv asdfiondvasdon vadsnlfnsd vasdfmlknvads asdvasdf"
+                android:gravity="center"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,43 +52,31 @@
             android:orientation="horizontal">
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="70dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:gravity="center">
-                <ImageView
+                <ImageButton
+                    android:id="@+id/goodBtn"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:backgroundTint="#aaaaaa"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/ic_outline_thumb_up_24"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
-                    android:textSize="20sp"
-                    android:textColor="#000000"
-                    android:text="0" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="70dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:gravity="center">
-                <ImageView
+                <ImageButton
+                    android:id="@+id/badBtn"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:backgroundTint="#aaaaaa"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/ic_outline_thumb_down_24"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
-                    android:textSize="20sp"
-                    android:textColor="#000000"
-                    android:text="0"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -84,6 +88,7 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true">
         <RelativeLayout
+            android:id="@+id/finishBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="40dp">
@@ -100,6 +105,5 @@
                 android:backgroundTint="#ffffff"
                 android:layout_centerInParent="true" />
         </RelativeLayout>
-
     </LinearLayout>
 </RelativeLayout>

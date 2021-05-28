@@ -1,7 +1,12 @@
 package com.example.capstone.bean;
 
 public class GroupVoteBean {
-    private String name, start, end, minLength, reg_id;
+    // Request & Response
+    private String groupCode, _id;
+    private String[] agree;
+
+    // Request
+    private String name, start, end, minLength, reg_id, memo;
 
     public void setMinLength(String minLength) {
         this.minLength = minLength;
@@ -40,5 +45,37 @@ public class GroupVoteBean {
 
     public String getReg_id() {
         return reg_id;
+    }
+
+    public void setGroupCode(String groupCode) {
+        this.groupCode = groupCode;
+    }
+
+    public String getGroupCode() {
+        return groupCode;
+    }
+
+    public void setAgree(String[] agree) {
+        this.agree = agree;
+    }
+
+    public String[] getAgree() {
+        return agree;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public String getMemo() {
+        return memo;
+    }
+
+    public void setMemo(String memo) {
+        this.memo = memo;
     }
 }

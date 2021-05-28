@@ -70,7 +70,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Schedule Name"
+                    android:text="스케줄 명"
                     android:textSize="20sp"
                     android:textFontWeight="300"
                     android:fontFamily="@font/montserrat"
@@ -80,7 +80,37 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
-                    android:hint="Travel, Meeting etc.."
+                    android:hint="회의, 여행 등..."
+                    android:textFontWeight="300"
+                    android:paddingLeft="10dp"
+                    android:fontFamily="@font/montserrat"
+                    android:paddingTop="5dp"
+                    android:background="@android:color/transparent"/>
+                <LinearLayout
+                    android:layout_marginTop="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#bbbbbb"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="40dp"
+                android:orientation="vertical"
+                android:paddingTop="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="내용 달기"
+                    android:textSize="20sp"
+                    android:textFontWeight="300"
+                    android:textColor="#000000"/>
+                <EditText
+                    android:id="@+id/memoInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:hint="문구 입력..."
                     android:textFontWeight="300"
                     android:paddingLeft="10dp"
                     android:fontFamily="@font/montserrat"

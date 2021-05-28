@@ -32,6 +32,7 @@
             android:background="@drawable/ic_baseline_keyboard_arrow_right_24" />
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/voteListBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"

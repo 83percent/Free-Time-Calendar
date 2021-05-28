@@ -12,6 +12,7 @@ import com.example.capstone.bean.RequestDateBean;
 import com.example.capstone.bean.SignInBean;
 import com.example.capstone.bean.SignUpBean;
 import com.example.capstone.bean.TimeBean;
+import com.example.capstone.bean.VoteBean;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -84,7 +85,13 @@ public interface HTTPService {
     @POST("/group/free/{GroupCode}")
     Call<GroupFreeBean[]> getGroupFree(@Path("GroupCode")String code, @Body RequestDateBean bean);
 
+    @GET("/group/vote/{GroupCode}")
+    Call<GroupVoteBean[]> getVoteList(@Path("GroupCode")String code);
+
     @POST("/group/vote/{GroupCode}")
-    Call<Boolean> sendVote(@Path("GroupCode")String code, @Body GroupVoteBean bean);
+    Call<GroupVoteBean> addVote(@Path("GroupCode")String code, @Body GroupVoteBean bean);
+
+    @POST("/vote/{VoteCode}")
+    Call<Boolean> sendVote(@Path("VoteCode") String code, @Body VoteBean bean);
 
 }
