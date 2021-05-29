@@ -19,6 +19,7 @@ import com.example.capstone.R;
 import com.example.capstone.bean.GroupMemberBean;
 import com.example.capstone.bean.IDReturnBean;
 import com.example.capstone.connect.RetrofitConnection;
+import com.example.capstone.schedule.ScheduleListView;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,7 +28,7 @@ import retrofit2.Response;
 public class GroupMenu extends Fragment {
     // View
     private ListView memberListView;
-    private LinearLayout outOfGroup, applierListBtn, voteListBtn;
+    private LinearLayout outOfGroup, applierListBtn, voteListBtn, scheduleListBtn;
     private RetrofitConnection retrofitConnection = RetrofitConnection.getInstance();
 
     // Field
@@ -54,6 +55,7 @@ public class GroupMenu extends Fragment {
         outOfGroup = (LinearLayout) rootView.findViewById(R.id.outOfGroup);
         voteListBtn = (LinearLayout) rootView.findViewById(R.id.voteListBtn);
         applierListBtn = (LinearLayout) rootView.findViewById(R.id.applierListBtn);
+        scheduleListBtn = (LinearLayout) rootView.findViewById(R.id.scheduleListBtn);
 
         getGroupList(groupCode); // 참여자 목록 생성
 
@@ -108,6 +110,15 @@ public class GroupMenu extends Fragment {
                 intent = new Intent(getActivity(), GroupApplierList.class);
                 intent.putExtra("admin", admin);
                 intent.putExtra("groupCode", groupCode);
+                startActivity(intent);
+            }
+        });
+        scheduleListBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ScheduleListView.class);
+                intent.putExtra("groupCode", activity.groupID);
+                intent.putExtra("groupName", activity.groupName);
                 startActivity(intent);
             }
         });

@@ -238,7 +238,7 @@ public class GroupNewSchedule extends AppCompatActivity {
             bean.setName(this.scheduleName.getText().toString());
             bean.setStart(__starts);
             bean.setEnd(__ends);
-            bean.setMinLength(this.minLength.getText().toString());
+            bean.setMinLength(Integer.parseInt(this.minLength.getText().toString()));
             bean.setReg_id(id);
             bean.setMemo(this.memoInput.getText().toString());
             return bean;

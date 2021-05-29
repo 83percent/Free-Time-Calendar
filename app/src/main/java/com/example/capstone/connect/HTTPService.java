@@ -91,7 +91,12 @@ public interface HTTPService {
     @POST("/group/vote/{GroupCode}")
     Call<GroupVoteBean> addVote(@Path("GroupCode")String code, @Body GroupVoteBean bean);
 
+    @GET("/group/schedule/{GroupCode}")
+    Call<GroupVoteBean[]> getGroupSchedule(@Path("GroupCode")String code);
+
     @POST("/vote/{VoteCode}")
     Call<Boolean> sendVote(@Path("VoteCode") String code, @Body VoteBean bean);
 
+    @POST("/vote/complete/{VoteCode}")
+    Call<GroupVoteBean> sendCompleteVote(@Path("VoteCode")String code);
 }

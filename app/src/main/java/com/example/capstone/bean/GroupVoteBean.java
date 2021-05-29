@@ -6,12 +6,13 @@ public class GroupVoteBean {
     private String[] agree;
 
     // Request
-    private String name, start, end, minLength, reg_id, memo;
+    private String name, start, end, reg_id, memo;
+    private int minLength;
 
-    public void setMinLength(String minLength) {
+    public void setMinLength(int minLength) {
         this.minLength = minLength;
     }
-    public String getMinLength() {
+    public int getMinLength() {
         return minLength;
     }
     public void setEnd(String end) {

@@ -68,6 +68,7 @@ public class GroupVoteListAdapter extends BaseAdapter {
         resultIntent.putExtra("start", listBeans[position].getStart());
         resultIntent.putExtra("end", listBeans[position].getEnd());
         resultIntent.putExtra("memo", listBeans[position].getMemo());
+        resultIntent.putExtra("minLength", listBeans[position].getMinLength());
         return resultIntent;
     }
 }

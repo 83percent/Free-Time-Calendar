@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/wrapper"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_centerInParent="true">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:orientation="horizontal"
+                android:background="@drawable/round_blue"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="D"
+                    android:textSize="24sp"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/baseColor"/>
+                <TextView
+                    android:id="@+id/dayFrame"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-54"
+                    android:fontFamily="@font/montserrat"
+                    android:textSize="24sp"
+                    android:textColor="@color/baseColor"/>
+            </LinearLayout>
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/titleFrame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="스케줄 명이 올 곳"
+            android:paddingTop="10dp"
+            android:textColor="#000000"
+            android:textSize="18sp"/>
+        <TextView
+            android:id="@+id/dateFrame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2021-05-21 10:00 ~ 2021-05-21 18:00"/>
+        <TextView
+            android:id="@+id/memoFrame"
+            android:paddingTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="추가적인 설명이 올곳"/>
+    </LinearLayout>
+
+</RelativeLayout>

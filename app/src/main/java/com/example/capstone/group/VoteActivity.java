@@ -11,13 +11,16 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.capstone.R;
+import com.example.capstone.bean.GroupVoteBean;
 import com.example.capstone.bean.VoteBean;
 import com.example.capstone.connect.RetrofitConnection;
+import com.example.capstone.schedule.ScheduleView;
 
 import java.util.Arrays;
 
@@ -38,6 +41,7 @@ public class VoteActivity extends AppCompatActivity {
     private String voteCode, memo, voteName, id, start, end;
     private String[] agree;
     private RetrofitConnection retrofitConnection;
+    private int minLength;
     private int voteState = 0; // 1: good, 0: none, -1:bad
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,6 +71,7 @@ public class VoteActivity extends AppCompatActivity {
             start = dataIntent.getStringExtra("start");
             end = dataIntent.getStringExtra("end");
             memo = dataIntent.getStringExtra("memo");
+            minLength = dataIntent.getIntExtra("minLength", 0);
 
             if(voteName != null) voteNameFrame.setText(voteName);
             if(memo != null) memoFrame.setText(memo);
@@ -111,7 +116,18 @@ public class VoteActivity extends AppCompatActivity {
         finishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Log.d("투표", "minLength : " + minLength);
+                Log.d("투표", "voteState : " + voteState);
+                Log.d("투표", "agree.length : " + agree.length);
+                if(minLength != 0 && voteState == 1) {
+
+                    if(minLength <= (agree.length + 1)) {
+                        sendComplete(voteCode);
+                    }
+                } else {
+                    finish();
+                }
+
             }
         });
     } // onCreate
@@ -154,5 +170,31 @@ public class VoteActivity extends AppCompatActivity {
             goodBtn.setBackgroundResource(R.drawable.ic_outline_thumb_up_24);
             goodBtn.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.unActive));
         }
+    }
+    private void sendComplete(String voteCode) {
+        if(retrofitConnection == null) retrofitConnection = RetrofitConnection.getInstance();
+        Call<GroupVoteBean> call = retrofitConnection.server.sendCompleteVote(voteCode);
+        call.enqueue(new Callback<GroupVoteBean>() {
+            @Override
+            public void onResponse(Call<GroupVoteBean> call, Response<GroupVoteBean> response) {
+                if(response.code() == 200) {
+                    Toast.makeText(VoteActivity.this, "투표가 종료되었습니다.", Toast.LENGTH_SHORT).show();
+                    GroupVoteBean bean = response.body();
+                    Intent intent = new Intent(getApplicationContext(), ScheduleView.class);
+                    intent.putExtra("name", bean.getName());
+                    intent.putExtra("start", bean.getStart());
+                    intent.putExtra("end", bean.getEnd());
+                    intent.putExtra("memo", bean.getMemo());
+                    startActivity(intent);
+                    finish();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GroupVoteBean> call, Throwable t) {
+                Toast.makeText(VoteActivity.this, "오류", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

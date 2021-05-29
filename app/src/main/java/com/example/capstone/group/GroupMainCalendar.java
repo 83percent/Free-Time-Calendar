@@ -50,9 +50,8 @@ public class GroupMainCalendar extends AppCompatActivity {
     // Field
     private int __year, __month;
     private int __newYear, __newMonth;
-    private MainBaseActivity activity;
     private TextView __onMonthView;
-    private String groupID, groupName;
+    public String groupID, groupName;
     private String admin;
     private boolean isOpenOption = false;
     private int memberCount = 0;

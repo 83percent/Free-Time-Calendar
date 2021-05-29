@@ -34,6 +34,8 @@
         <activity android:name=".group.GroupNewSchedule"/>
         <activity android:name=".group.VoteActivity"/>
         <activity android:name=".group.VoteList"/>
+        <activity android:name=".schedule.ScheduleView"/>
+        <activity android:name=".schedule.ScheduleListView"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
