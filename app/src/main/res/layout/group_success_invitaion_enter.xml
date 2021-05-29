@@ -17,19 +17,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat"
                 android:textSize="17sp"
                 android:textFontWeight="500"
                 android:textColor="#000000"
-                android:text="Send"
+                android:text="전송"
                 android:layout_gravity="center" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Invite Request"
+                android:text="입장 요청을 보냈어요"
                 android:textFontWeight="500"
                 android:textSize="28sp"
-                android:fontFamily="@font/montserrat"
                 android:textColor="#0177FC" />
 
         </LinearLayout>

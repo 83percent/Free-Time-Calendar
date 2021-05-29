@@ -14,24 +14,43 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Create"
+                android:text="새로운 그룹이 만들어졌습니다"
                 android:textFontWeight="500"
-                android:textSize="43sp"
-                android:fontFamily="@font/montserrat"
+                android:textSize="28sp"
                 android:textColor="#0177FC" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat"
-                android:textSize="17sp"
+                android:textSize="15sp"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
                 android:textFontWeight="500"
                 android:textColor="#000000"
-                android:text="New Group"
-                android:layout_gravity="center" />
+                android:text="하단의 초대 코드를 눌러 복사하고 전송하여" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/groupNameFrame"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/baseColor"
+                    android:textFontWeight="500"
+                    android:text=""/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textFontWeight="500"
+                    android:textColor="#000000"
+                    android:text="으로 초대해보세요"/>
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>
@@ -51,12 +70,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Group Invitation Code"
-                android:textSize="16sp"
+                android:text="초대코드"
+                android:textSize="14sp"
                 android:layout_marginBottom="5dp"/>
             <TextView
                 android:id="@+id/invitationCode"
                 android:clickable="true"
+                android:fontFamily="@font/montserrat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#000000"

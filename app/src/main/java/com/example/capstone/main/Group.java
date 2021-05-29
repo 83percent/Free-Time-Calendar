@@ -132,6 +132,7 @@ public class Group extends Fragment {
                 if(createGroupCode != null) {
                     Intent intent = new Intent(activity.getApplicationContext(), SuccessCreateGroup.class);
                     intent.putExtra("groupCode",createGroupCode);
+                    intent.putExtra("groupName", data.getStringExtra("groupName"));
                     startActivity(intent);
                 }
             }

@@ -30,13 +30,6 @@ public class InputInvitation extends Activity {
         setContentView(R.layout.group_input_invitation);
         sendBtn = (RelativeLayout) findViewById(R.id.sendInvitationRequestBtn);
         codeInputView = (EditText) findViewById(R.id.codeInputView);
-        back = (ImageButton) findViewById(R.id.invitationCodeBack);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
 
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override

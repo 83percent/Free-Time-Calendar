@@ -6,7 +6,8 @@
     android:background="@drawable/group_list"
     android:orientation="horizontal"
     android:paddingVertical="15dp"
-    android:paddingHorizontal="13dp"
+    android:paddingLeft="30dp"
+    android:paddingRight="15dp"
     android:gravity="center_vertical">
     <RelativeLayout
         android:layout_width="55dp"
@@ -20,14 +21,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="D-"
+                android:text="D"
                 android:textSize="16sp"
                 android:textColor="@color/baseColor"
                 android:fontFamily="@font/montserrat"/>
             <TextView
+                android:id="@+id/dayFrame"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="56"
+                android:text="-56"
                 android:textSize="16sp"
                 android:textColor="@color/baseColor"
                 android:fontFamily="@font/montserrat"/>
@@ -40,12 +42,14 @@
         android:orientation="vertical"
         android:layout_marginLeft="10dp">
         <TextView
+            android:id="@+id/titleFrame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="스케줄 명칭이 올 곳"
             android:textSize="18sp"
             android:textColor="#000000"/>
         <TextView
+            android:id="@+id/dateFrame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="13sp"

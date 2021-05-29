@@ -10,6 +10,7 @@ import com.example.capstone.bean.GroupVoteBean;
 import com.example.capstone.bean.IDReturnBean;
 import com.example.capstone.bean.RequestDateBean;
 import com.example.capstone.bean.SignInBean;
+import com.example.capstone.bean.SignInReturnBean;
 import com.example.capstone.bean.SignUpBean;
 import com.example.capstone.bean.TimeBean;
 import com.example.capstone.bean.VoteBean;
@@ -24,7 +25,7 @@ import retrofit2.http.Path;
 
 public interface HTTPService {
     @POST("/user")
-    Call<String> sendSignIn(@Body SignInBean bean);
+    Call<SignInReturnBean> sendSignIn(@Body SignInBean bean);
 
     @POST("/user/sign")
     Call<String> sendSignUp(@Body SignUpBean bean);
@@ -91,8 +92,9 @@ public interface HTTPService {
     @POST("/group/vote/{GroupCode}")
     Call<GroupVoteBean> addVote(@Path("GroupCode")String code, @Body GroupVoteBean bean);
 
+    // 그룹 스케줄 목록 불러오기
     @GET("/group/schedule/{GroupCode}")
-    Call<GroupVoteBean[]> getGroupSchedule(@Path("GroupCode")String code);
+    Call<GroupScheduleBean[]> getGroupSchedule(@Path("GroupCode")String code);
 
     @POST("/vote/{VoteCode}")
     Call<Boolean> sendVote(@Path("VoteCode") String code, @Body VoteBean bean);

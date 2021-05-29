@@ -3,6 +3,8 @@ package com.example.capstone.schedule;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -11,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.capstone.R;
+import com.example.capstone.bean.GroupScheduleBean;
 import com.example.capstone.bean.GroupVoteBean;
 import com.example.capstone.connect.RetrofitConnection;
 
@@ -30,6 +33,7 @@ public class ScheduleListView extends AppCompatActivity {
 
     // Field
     RetrofitConnection retrofitConnection;
+    private ScheduleListAdapter adapter = null;
     private String groupCode;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,23 +59,36 @@ public class ScheduleListView extends AppCompatActivity {
             if(id != null) {
 
             } else {
-                Toast.makeText(this, "정보륿 불러올 수 없습니다", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "정보를 불러올 수 없습니다", Toast.LENGTH_SHORT).show();
             }
         }
+
+        scheduleListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = adapter.getItemIntent(position);
+                startActivity(intent);
+            }
+        });
     } // onCreate
 
     private void getGroupSchedule(String groupCode) {
         if(retrofitConnection == null) retrofitConnection = RetrofitConnection.getInstance();
-        Call<GroupVoteBean[]> call = retrofitConnection.server.getGroupSchedule(groupCode);
-        call.enqueue(new Callback<GroupVoteBean[]>() {
+        Call<GroupScheduleBean[]> call = retrofitConnection.server.getGroupSchedule(groupCode);
+        call.enqueue(new Callback<GroupScheduleBean[]>() {
             @Override
-            public void onResponse(Call<GroupVoteBean[]> call, Response<GroupVoteBean[]> response) {
-                
+            public void onResponse(Call<GroupScheduleBean[]> call, Response<GroupScheduleBean[]> response) {
+                if(response.code() == 200) {
+                    if(adapter == null) adapter = new ScheduleListAdapter(getApplicationContext(), response.body());
+                    scheduleListView.setAdapter(adapter);
+                } else {
+                    Toast.makeText(getApplicationContext(), "(succ) 정보를 불러올 수 없습니다", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
-            public void onFailure(Call<GroupVoteBean[]> call, Throwable t) {
-
+            public void onFailure(Call<GroupScheduleBean[]> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "정보를 불러올 수 없습니다", Toast.LENGTH_SHORT).show();
             }
         });
     }

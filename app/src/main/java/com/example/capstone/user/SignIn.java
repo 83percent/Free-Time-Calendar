@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.capstone.MainBaseActivity;
 import com.example.capstone.R;
+import com.example.capstone.bean.SignInReturnBean;
 import com.example.capstone.connect.RetrofitConnection;
 import com.example.capstone.bean.SignInBean;
 import com.example.capstone.lib.Regexp;
@@ -73,20 +74,22 @@ public class SignIn extends AppCompatActivity {
             }
         });
     }
-    private void send(String email,String password) {
+    private void send(final String email,String password) {
         SignInBean bean = new SignInBean(email, password);
         RetrofitConnection retrofitConnection = RetrofitConnection.getInstance();
-        Call<String> call = retrofitConnection.server.sendSignIn(bean);
-        call.enqueue(new Callback<String>() {
+        Call<SignInReturnBean> call = retrofitConnection.server.sendSignIn(bean);
+        call.enqueue(new Callback<SignInReturnBean>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<SignInReturnBean> call, Response<SignInReturnBean> response) {
                 switch (response.code()) {
                     case 200 : {
-                        String id = response.body();
+                        SignInReturnBean bean = response.body();
                         SharedPreferences pref = getSharedPreferences("FreeTime",MODE_PRIVATE);
 
                         SharedPreferences.Editor editor = pref.edit();
-                        editor.putString("id", id);
+                        editor.putString("id", bean.get_id());
+                        editor.putString("name", bean.getName());
+                        editor.putString("email", email);
                         editor.commit();
 
                         Intent intent = new Intent(getApplicationContext(), MainBaseActivity.class);
@@ -105,7 +108,7 @@ public class SignIn extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<SignInReturnBean> call, Throwable t) {
                 Toast.makeText(SignIn.this, "(F)잠시 후 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
                 t.printStackTrace();
             }

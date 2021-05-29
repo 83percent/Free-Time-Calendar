@@ -24,7 +24,6 @@ import retrofit2.Response;
 
 
 public class AddNewGroup extends Activity {
-    private ImageButton back;
     private RelativeLayout createBtn;
     private EditText inputGroupName;
     @Override
@@ -32,7 +31,6 @@ public class AddNewGroup extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.group_new_group);
 
-        back = (ImageButton) findViewById(R.id.newGroupBack);
         createBtn = (RelativeLayout) findViewById(R.id.createNewGroupBtn);
         inputGroupName = (EditText) findViewById(R.id.input_group_name);
 
@@ -64,6 +62,7 @@ public class AddNewGroup extends Activity {
                                     Intent intent = new Intent();
                                     intent.putExtra("isCreate", isCreate);
                                     intent.putExtra("groupCode", response.body());
+                                    intent.putExtra("groupName", groupName);
                                     setResult(RESULT_OK, intent);
                                     finish();
                                 } else {
@@ -78,12 +77,6 @@ public class AddNewGroup extends Activity {
                         }
                     });
                 }
-            }
-        });
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
             }
         });
     }

@@ -75,4 +75,19 @@
                 android:backgroundTint="#555555"/>
         </LinearLayout>
     </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/blue_btn"
+        android:backgroundTint="#e3e8ee">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="차단"
+            android:textColor="#ff0000"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
 </RelativeLayout>

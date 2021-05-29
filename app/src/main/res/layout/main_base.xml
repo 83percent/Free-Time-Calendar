@@ -14,7 +14,7 @@
         <!-- Navigation -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="53dp"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -32,8 +32,8 @@
                     android:clickable="true"
                     android:id="@+id/myBtn">
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
                         android:layout_centerInParent="true"
                         android:backgroundTint="#aaaaaa"
                         android:background="@drawable/ic_outline_person_24"/>
@@ -45,8 +45,8 @@
                     android:clickable="true"
                     android:id="@+id/groupBtn">
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
                         android:layout_centerInParent="true"
                         android:backgroundTint="#aaaaaa"
                         android:background="@drawable/ic_outline_group_24"/>
@@ -58,8 +58,8 @@
                     android:clickable="true"
                     android:id="@+id/notificationBtn">
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
                         android:layout_centerInParent="true"
                         android:backgroundTint="#aaaaaa"
                         android:background="@drawable/ic_outline_notifications_24"/>
@@ -71,8 +71,8 @@
                     android:clickable="true"
                     android:id="@+id/settingBtn">
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="35dp"
+                        android:layout_height="33dp"
                         android:layout_centerInParent="true"
                         android:backgroundTint="#aaaaaa"
                         android:background="@drawable/ic_outline_settings_24"/>
