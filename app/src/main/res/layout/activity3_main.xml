@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user.MainActivity3"
+    android:orientation="vertical"
+    >
+    <ScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="60dp"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="102dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Alarm"
+            android:textColor="#000000"
+            android:textSize="25sp"
+            tools:layout_editor_absoluteX="56dp"
+            tools:layout_editor_absoluteY="111dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="411dp"
+        android:layout_height="180dp"
+        android:orientation="vertical"
+        android:paddingLeft="60dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="152dp">
+
+        <EditText
+            android:id="@+id/edit_title"
+            android:layout_width="355dp"
+            android:layout_height="46dp"
+            android:hint="타이틀"
+            tools:layout_editor_absoluteX="56dp"
+            tools:layout_editor_absoluteY="167dp" />
+
+        <EditText
+            android:id="@+id/edit_message"
+            android:layout_width="355dp"
+            android:layout_height="46dp"
+            android:hint="내용"
+            tools:layout_editor_absoluteX="56dp"
+            tools:layout_editor_absoluteY="236dp" />
+
+        <Button
+            android:id="@+id/btn_channel1"
+            android:layout_width="128dp"
+            android:layout_height="47dp"
+            android:text="알림 보내기"
+            tools:layout_editor_absoluteX="141dp"
+            tools:layout_editor_absoluteY="306dp" />
+    </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
