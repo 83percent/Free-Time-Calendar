@@ -1,5 +1,7 @@
 package com.example.capstone.group;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,7 +30,7 @@ import retrofit2.Response;
 public class GroupMenu extends Fragment {
     // View
     private ListView memberListView;
-    private LinearLayout outOfGroup, applierListBtn, voteListBtn, scheduleListBtn;
+    private LinearLayout outOfGroup, applierListBtn, voteListBtn, scheduleListBtn, invitationCodeBtn;
     private RetrofitConnection retrofitConnection = RetrofitConnection.getInstance();
 
     // Field
@@ -56,6 +58,7 @@ public class GroupMenu extends Fragment {
         voteListBtn = (LinearLayout) rootView.findViewById(R.id.voteListBtn);
         applierListBtn = (LinearLayout) rootView.findViewById(R.id.applierListBtn);
         scheduleListBtn = (LinearLayout) rootView.findViewById(R.id.scheduleListBtn);
+        invitationCodeBtn = (LinearLayout) rootView.findViewById(R.id.invitationCodeBtn);
 
         getGroupList(groupCode); // 참여자 목록 생성
 
@@ -120,6 +123,16 @@ public class GroupMenu extends Fragment {
                 intent.putExtra("groupCode", activity.groupID);
                 intent.putExtra("groupName", activity.groupName);
                 startActivity(intent);
+            }
+        });
+        invitationCodeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(getActivity().CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("label", groupCode);
+                clipboard.setPrimaryClip(clip);
+
+                Toast.makeText(getActivity(), "복사되었습니다", Toast.LENGTH_SHORT).show();
             }
         });
         return rootView;

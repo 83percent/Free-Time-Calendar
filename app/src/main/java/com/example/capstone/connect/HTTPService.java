@@ -9,6 +9,7 @@ import com.example.capstone.bean.GroupScheduleBean;
 import com.example.capstone.bean.GroupVoteBean;
 import com.example.capstone.bean.IDReturnBean;
 import com.example.capstone.bean.RequestDateBean;
+import com.example.capstone.bean.ScheduleCalendarElement;
 import com.example.capstone.bean.SignInBean;
 import com.example.capstone.bean.SignInReturnBean;
 import com.example.capstone.bean.SignUpBean;
@@ -92,9 +93,15 @@ public interface HTTPService {
     @POST("/group/vote/{GroupCode}")
     Call<GroupVoteBean> addVote(@Path("GroupCode")String code, @Body GroupVoteBean bean);
 
+
+
     // 그룹 스케줄 목록 불러오기
     @GET("/group/schedule/{GroupCode}")
     Call<GroupScheduleBean[]> getGroupSchedule(@Path("GroupCode")String code);
+
+    // 그룹 스케줄 목록 불러오기 (월 기준)
+    @GET("/group/schedule/{GroupCode}/{year}/{month}")
+    Call<ScheduleCalendarElement[]> getGroupScheduleForMonth(@Path("GroupCode") String code, @Path("year") int year, @Path("month") int month);
 
     @POST("/vote/{VoteCode}")
     Call<Boolean> sendVote(@Path("VoteCode") String code, @Body VoteBean bean);

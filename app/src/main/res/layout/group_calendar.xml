@@ -178,9 +178,11 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp" />
+                            android:layout_height="72dp"
+                            android:gravity="center">
+                        </RelativeLayout>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -193,9 +195,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -208,9 +211,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -223,9 +227,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -238,9 +243,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -253,9 +259,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -268,9 +275,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                 </LinearLayout>
                 <!-- // Weeks Element -->
@@ -291,9 +299,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -306,9 +315,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -321,9 +331,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -336,10 +347,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -352,9 +363,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -367,9 +379,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -382,9 +395,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                 </LinearLayout>
                 <!-- // Weeks Element -->
@@ -405,9 +419,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -420,9 +435,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -435,9 +451,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -450,9 +467,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -465,9 +483,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -480,9 +499,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -495,9 +515,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                 </LinearLayout>
                 <!-- // Weeks Element -->
@@ -518,9 +539,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -533,9 +555,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -548,9 +571,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -563,9 +587,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -578,10 +603,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -594,9 +619,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -609,9 +635,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                 </LinearLayout>
                 <!-- // Weeks Element -->
@@ -632,9 +659,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -647,9 +675,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -662,9 +691,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -677,9 +707,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -692,9 +723,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -707,9 +739,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -722,9 +755,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                 </LinearLayout>
                 <!-- // Weeks Element -->
@@ -745,9 +779,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -760,9 +795,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -775,9 +811,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -790,9 +827,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -805,9 +843,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -820,9 +859,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                     <LinearLayout
                         android:clickable="true"
@@ -835,9 +875,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="" />
-                        <FrameLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="72dp"/>
+                            android:layout_height="72dp"
+                            android:gravity="center"/>
                     </LinearLayout>
                 </LinearLayout>
                 <!-- // Weeks Element -->

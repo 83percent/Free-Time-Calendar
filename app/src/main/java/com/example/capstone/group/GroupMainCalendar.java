@@ -1,27 +1,36 @@
 package com.example.capstone.group;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.capstone.MainBaseActivity;
 import com.example.capstone.R;
+import com.example.capstone.bean.FreeBean;
+import com.example.capstone.bean.ScheduleCalendarElement;
+import com.example.capstone.connect.RetrofitConnection;
+import com.example.capstone.data.TimeData;
 import com.example.capstone.lib.Date;
-import com.example.capstone.my.DetailActivity;
-import com.example.capstone.my.NewBase;
 
-import org.w3c.dom.Text;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class GroupMainCalendar extends AppCompatActivity {
     // View
@@ -55,6 +64,7 @@ public class GroupMainCalendar extends AppCompatActivity {
     private String admin;
     private boolean isOpenOption = false;
     private int memberCount = 0;
+    private RetrofitConnection retrofitConnection = null;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,6 +127,7 @@ public class GroupMainCalendar extends AppCompatActivity {
 
         for(int i=0; i<WEEKS.length; ++i) { WEEKS[i] = (LinearLayout) weeksWrapper.getChildAt(i); }
         createCalendar();
+        getScheduleData(this.__year,this. __month);
 
         // overview Event
         overviewOnBtn.setOnClickListener(new View.OnClickListener() {
@@ -174,8 +185,8 @@ public class GroupMainCalendar extends AppCompatActivity {
                 if(__days[loopDay] != null) __days[loopDay].setOnClickListener(null);
                 TextView text = (TextView) ((LinearLayout) weeksLayout.getChildAt(dayOfWeek)).getChildAt(0);
                 //Log.d("TEST", "createCalendar: 위치 : 줄 = "+week+" / 칸 = " + dayOfWeek);
-                FrameLayout frameLayout = (FrameLayout) ((LinearLayout) weeksLayout.getChildAt(dayOfWeek)).getChildAt(1);
-                frameLayout.removeAllViewsInLayout();
+                RelativeLayout relativeLayout = (RelativeLayout) ((LinearLayout) weeksLayout.getChildAt(dayOfWeek)).getChildAt(1);
+                relativeLayout.removeAllViewsInLayout();
                 //Log.d("TEST", "createCalendar: Frame : " + frameLayout);
                 if(day < daysMax+1 && day > 0) {
 
@@ -207,6 +218,7 @@ public class GroupMainCalendar extends AppCompatActivity {
         if(date == null) date = new Date();
         date.setDate(year, month, 1);
         createCalendar();
+        getScheduleData(year, month);
     }
 
     // Anim
@@ -259,6 +271,52 @@ public class GroupMainCalendar extends AppCompatActivity {
         return this.admin;
     }
 
+    private void attachFree(ScheduleCalendarElement[] elements) {
+        if(elements != null) {
+            LinearLayout parent = null;
+            LinearLayout child = null;
+            int firstDayOfWeek = date.getFirstDayOfWeek();
+
+            for(int i=0; i<elements.length; i++) {
+                int _o = elements[i].getStart().getDate()+firstDayOfWeek-1;
+                parent = WEEKS[Math.abs(_o / 7)];
+                child = (LinearLayout) parent.getChildAt(Math.abs(_o%7));
+                ((RelativeLayout) child.getChildAt(1)).addView(createBar());
+            }
+        }
+    } // attachFree
+
+    private FrameLayout createBar() {
+        final int size = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 28, getResources().getDisplayMetrics());
+        FrameLayout frameLayout = new FrameLayout(getApplicationContext());
+        frameLayout.setBackgroundResource(R.drawable.have_schedule);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(size, size);
+        frameLayout.setLayoutParams(params);
+        return frameLayout;
+    }
+
+    private void getScheduleData(int year, int month) {
+        if(retrofitConnection == null) retrofitConnection = RetrofitConnection.getInstance();
+        Call<ScheduleCalendarElement[]> call = retrofitConnection.server.getGroupScheduleForMonth(this.groupID, year, month);
+        call.enqueue(new Callback<ScheduleCalendarElement[]>() {
+            @Override
+            public void onResponse(Call<ScheduleCalendarElement[]> call, Response<ScheduleCalendarElement[]> response) {
+                if(response.code() == 200) {
+                    ScheduleCalendarElement[] elements = response.body();
+                    attachFree(elements);
+                    for(int i=0; i<elements.length; i++) {
+                        Log.d("스케줄 불러오기 : ", "start date" + elements[i].getStart().getDate());
+
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ScheduleCalendarElement[]> call, Throwable t) {
+                Toast.makeText(GroupMainCalendar.this, "스케줄 정보를 불러올 수 없습니다.", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
     @Override
     public void onBackPressed() {
         if(isOpenOption) {

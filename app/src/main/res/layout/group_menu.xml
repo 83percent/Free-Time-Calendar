@@ -6,6 +6,30 @@
     android:orientation="vertical"
     android:background="#ffffff">
     <LinearLayout
+        android:id="@+id/invitationCodeBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingVertical="13dp"
+        android:paddingHorizontal="20dp"
+        android:background="@drawable/group_list">
+        <ImageView
+            android:layout_width="21dp"
+            android:layout_height="21dp"
+            android:background="@drawable/ic_baseline_launch_24"
+            android:backgroundTint="#000000"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="10dp"
+            android:text="초대코드 복사"
+            android:textColor="#000000"
+            android:textSize="15sp" />
+    </LinearLayout>
+    <LinearLayout
         android:id="@+id/scheduleListBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

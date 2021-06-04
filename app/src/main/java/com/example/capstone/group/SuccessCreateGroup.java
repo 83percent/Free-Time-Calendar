@@ -10,7 +10,6 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.widget.Toast;
 
-import static android.content.Context.CLIPBOARD_SERVICE;
 import androidx.annotation.Nullable;
 
 import com.example.capstone.R;

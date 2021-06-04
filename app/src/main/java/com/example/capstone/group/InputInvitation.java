@@ -21,7 +21,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class InputInvitation extends Activity {
-    private ImageButton back;
     private RelativeLayout sendBtn;
     private EditText codeInputView;
     @Override

@@ -38,6 +38,7 @@ public class ScheduleView extends AppCompatActivity {
 
             if(this.title != null) this.titleFrame.setText(this.title);
             if(this.memo != null) this.memoFrame.setText(this.memo);
+            if(this.start != null && this.end != null) this.dateFrame.setText((this.start + " ~ " + this.end));
 
         }
 

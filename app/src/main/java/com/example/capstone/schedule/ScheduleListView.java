@@ -82,7 +82,11 @@ public class ScheduleListView extends AppCompatActivity {
                     if(adapter == null) adapter = new ScheduleListAdapter(getApplicationContext(), response.body());
                     scheduleListView.setAdapter(adapter);
                 } else {
-                    Toast.makeText(getApplicationContext(), "(succ) 정보를 불러올 수 없습니다", Toast.LENGTH_SHORT).show();
+                    if(response.code() == 404) {}
+                    else {
+                        Toast.makeText(getApplicationContext(), "(succ) 정보를 불러올 수 없습니다", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             }
 
