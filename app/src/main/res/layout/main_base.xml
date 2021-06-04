@@ -57,7 +57,7 @@
                     android:layout_weight="1"
                     android:clickable="true"
                     android:id="@+id/notificationBtn">
-                    <ImageView
+                    <ImageButton
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_centerInParent="true"
