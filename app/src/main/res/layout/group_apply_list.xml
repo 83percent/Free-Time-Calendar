@@ -76,18 +76,26 @@
         </LinearLayout>
     </RelativeLayout>
     <RelativeLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="20dp"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/blue_btn"
-        android:backgroundTint="#e3e8ee">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="차단"
-            android:textColor="#ff0000"
-            android:layout_centerInParent="true"/>
+        android:layout_height="match_parent"
+        android:id="@+id/banMenuFrame">
+        <FrameLayout
+            android:id="@+id/banBtn"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/red_btn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="차단"
+                android:textColor="#ffffff"
+                android:layout_centerInParent="true"/>
+        </FrameLayout>
+
     </RelativeLayout>
 </RelativeLayout>

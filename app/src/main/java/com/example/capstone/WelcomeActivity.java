@@ -67,7 +67,6 @@ public class WelcomeActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.main_slide_up);
-
                     btnWrapper.startAnimation(anim);
                     btnWrapper.setVisibility(View.VISIBLE);
                 }

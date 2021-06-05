@@ -26,7 +26,6 @@ public class DataManager extends SQLiteOpenHelper {
                 "endDay INTEGER not null," + // 10
                 "endHour INTEGER not null," + // 11
                 "endMin INTEGER not null)"); // 12
-
         // Schedule Time
         db.execSQL("CREATE TABLE scheduleNameTBL (" +
                 "code char(24) not null primary key," +
@@ -39,6 +38,14 @@ public class DataManager extends SQLiteOpenHelper {
                 "name varchar(20) not null," +
                 "admin char(24) not null," +
                 "length INTEGER default 1)");
+
+        // Notification
+        db.execSQL("CREATE TABLE notification (" +
+                "id INTEGER not null primary key autoincrement," +
+                "owner char(24) not null," +
+                "type varchar not null," +
+                "message varchar" +
+                ")");
     }
 
     @Override
@@ -47,5 +54,6 @@ public class DataManager extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS scheduleNameTBL");
         db.execSQL("DROP TABLE IF EXISTS groupTBL");
         db.execSQL("DROP TABLE IF EXISTS groupMemberTBL");
+        db.execSQL("DROP TABLE IF EXISTS notification");
     }
 }

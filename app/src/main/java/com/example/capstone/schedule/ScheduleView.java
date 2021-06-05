@@ -18,6 +18,7 @@ public class ScheduleView extends AppCompatActivity {
 
     // Field
     private String title, start, end, memo;
+    private int dday;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,11 +36,14 @@ public class ScheduleView extends AppCompatActivity {
             this.start = dataIntent.getStringExtra("start");
             this.end = dataIntent.getStringExtra("end");
             this.memo = dataIntent.getStringExtra("memo");
+            this.dday = dataIntent.getIntExtra("dday", 0);
 
             if(this.title != null) this.titleFrame.setText(this.title);
             if(this.memo != null) this.memoFrame.setText(this.memo);
             if(this.start != null && this.end != null) this.dateFrame.setText((this.start + " ~ " + this.end));
-
+            if(this.dday < 0) this.dayFrame.setText(""+this.dday);
+            else if(this.dday == 0) this.dayFrame.setText("day");
+            else this.dayFrame.setText("+"+dday);
         }
 
         this.wrapper.setOnClickListener(new View.OnClickListener() {
