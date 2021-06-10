@@ -51,7 +51,7 @@ public class Group extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         activity = (MainBaseActivity) getActivity();
-}
+    }
     @Override
     public void onDetach() {
         super.onDetach();
@@ -160,7 +160,6 @@ public class Group extends Fragment {
 
                 }
             }
-
             @Override
             public void onFailure(Call<GroupListBean[]> call, Throwable t) {
                 Toast.makeText(activity.getApplicationContext(), "목록을 불러올 수 없습니다.", Toast.LENGTH_SHORT).show();

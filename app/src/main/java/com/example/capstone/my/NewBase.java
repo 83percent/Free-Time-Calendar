@@ -22,7 +22,6 @@ import com.example.capstone.lib.Date;
 
 public class NewBase extends AppCompatActivity {
     // View
-    private ImageButton back;
     private RelativeLayout option_free;
     private RelativeLayout option_schedule;
     private RelativeLayout addBtn;
@@ -55,7 +54,6 @@ public class NewBase extends AppCompatActivity {
         if(day == null) day = String.valueOf(date.getDay());
 
         // View
-        back = (ImageButton) findViewById(R.id.myNewBack);
         addBtn = (RelativeLayout) findViewById(R.id.addBtn);
         option_free = (RelativeLayout) findViewById(R.id.option_free);
         option_schedule = (RelativeLayout) findViewById(R.id.option_schedule);
@@ -77,14 +75,6 @@ public class NewBase extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.newFragmentBase, freeFragment).commit();
 
 
-
-
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
         option_free.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,7 +112,27 @@ public class NewBase extends AppCompatActivity {
     }
     protected boolean saveNewFree(TimeBean bean) {
         TimeData timeData = new TimeData(id, getApplicationContext());
-        timeData.set(bean);
+        bean.setType("free");
+        timeData.set(bean, "free");
+        if(bean != null) {
+            final int month = bean.getsMonth();
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent();
+                    intent.putExtra("month", month);
+                    setResult(RESULT_OK, intent);
+                    finish();
+                }
+            }, 500);
+        }
+        return true;
+    }
+    protected boolean saveNewSchedule(TimeBean bean) {
+        TimeData timeData = new TimeData(id, getApplicationContext());
+        bean.setType("schedule");
+        timeData.set(bean, "schedule");
         if(bean != null) {
             final int month = bean.getsMonth();
             Handler handler = new Handler();

@@ -3,7 +3,7 @@ package com.example.capstone.bean;
 public class TimeBean {
     private int sYear, sMonth, sDay, sHour, sMin;
     private int eYear, eMonth, eDay, eHour, eMin;
-    private String code, type;
+    private String code, type, name;
 
     public void setStart(int[] starts) {
         this.sYear = starts[0];
@@ -34,6 +34,13 @@ public class TimeBean {
         this.eMin = min;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     public void setCode(String code) {this.code = code;}
     public String getCode() { return code; }

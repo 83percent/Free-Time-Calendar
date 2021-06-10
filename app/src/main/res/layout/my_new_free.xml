@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Time"
+            android:text="시간"
             android:textSize="20sp"
             android:textFontWeight="300"
             android:layout_marginLeft="10dp"
@@ -25,15 +25,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Start"
                 android:layout_marginLeft="10dp"
-                android:textSize="16sp"
+                android:text="일정 시작 시간"
+                android:textColor="#aaaaaa"
                 android:textFontWeight="100"
-                android:fontFamily="@font/montserrat"
-                android:textColor="#aaaaaa"/>
+                android:textSize="16sp" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -142,15 +143,16 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="30dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="End"
                 android:layout_marginLeft="10dp"
-                android:textSize="16sp"
+                android:text="일정 끝나는 시간"
+                android:textColor="#aaaaaa"
                 android:textFontWeight="100"
-                android:fontFamily="@font/montserrat"
-                android:textColor="#aaaaaa"/>
+                android:textSize="16sp" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

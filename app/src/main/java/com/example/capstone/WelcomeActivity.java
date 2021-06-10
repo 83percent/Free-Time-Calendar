@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -14,8 +15,15 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.capstone.bean.NotificationBean;
+import com.example.capstone.connect.RetrofitConnection;
 import com.example.capstone.data.DataManager;
+import com.example.capstone.data.NotificationData;
 import com.example.capstone.user.SignIn;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class WelcomeActivity extends AppCompatActivity {
     // View
@@ -47,20 +55,74 @@ public class WelcomeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        SharedPreferences pref = getSharedPreferences("FreeTime",MODE_PRIVATE);
-        String id = pref.getString("id", null);
+        final SharedPreferences pref = getSharedPreferences("FreeTime",MODE_PRIVATE);
+        final String id = pref.getString("id", null);
 
         if(id != null) {
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
+            RetrofitConnection retrofitConnection = RetrofitConnection.getInstance();
+            Call<NotificationBean[]> call = retrofitConnection.server.getNotification(id);
+            call.enqueue(new Callback<NotificationBean[]>() {
                 @Override
-                public void run() {
-                    Intent intent = new Intent(getApplicationContext(), MainBaseActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
+                public void onResponse(Call<NotificationBean[]> call, Response<NotificationBean[]> response) {
+                    if(response.code() == 200 && response.body().length > 0) {
+                        synchronized (this) {
+                            NotificationBean[] beans = response.body();
+                            NotificationData data = NotificationData.getInstance(getApplicationContext());
+                            data.set(id, response.body());
+
+                            SharedPreferences.Editor editor = pref.edit();
+                            if(pref.getInt("newCount", 0) == 0) {
+                                editor.putInt("newCount", response.body().length);
+                            } else {
+                                editor.putInt("newCount", pref.getInt("newCount", 0)+ response.body().length);
+                            }
+                            editor.commit();
+
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Intent intent = new Intent(getApplicationContext(), MainBaseActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    startActivity(intent);
+                                }
+                            }, 1000);
+                        }
+
+                    } else {
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent(getApplicationContext(), MainBaseActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                            }
+                        }, 1000);
+                    }
                 }
-            }, 1000);
+
+                @Override
+                public void onFailure(Call<NotificationBean[]> call, Throwable t) {
+                    Toast.makeText(WelcomeActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+                    t.printStackTrace();
+                    /*
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent intent = new Intent(getApplicationContext(), MainBaseActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                        }
+                    }, 1000);
+                     */
+                }
+            });
+
         } else {
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
@@ -82,6 +144,5 @@ public class WelcomeActivity extends AppCompatActivity {
             return;
         }
         if (System.currentTimeMillis() <= backKeyPressedTime + 2500) { finish(); }
-
     }
 }

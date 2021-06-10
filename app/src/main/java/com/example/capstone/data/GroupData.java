@@ -40,7 +40,7 @@ public class GroupData {
     public boolean set(String code, String name, String id) {
         try {
             sql  = db.getWritableDatabase();
-            sql.execSQL("INSERT INTO groupTBL VALUES ('"+code+"','"+name+"','"+id+"', 1)");
+            sql.execSQL("INSERT INTO groupTBL VALUES ('"+id+"','"+code+"','"+name+"','"+id+"', 1)");
             return true;
         } catch(Exception e) {
             e.printStackTrace();

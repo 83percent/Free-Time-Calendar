@@ -3,6 +3,7 @@ package com.example.capstone.data;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.capstone.bean.NotificationBean;
 
@@ -32,8 +33,8 @@ public class NotificationData {
     public boolean set(String owner, NotificationBean bean) {
         SQLiteDatabase sql = db.getWritableDatabase();
         try {
-            sql.execSQL("INSERT INTO notification(owner, type, message) VALUES (" +
-                    "'" +owner+"','" + bean.getType() + "','" + bean.getMessage() + "'" +
+            sql.execSQL("INSERT INTO notification(access, owner, type, message1, message2) VALUES (" +
+                    "'"+bean.getAccess()+"', '" +owner+"','" + bean.getType() + "','" + bean.getMessage1() + "','" + bean.getMessage2() + "'" +
                     ")");
             return true;
         } catch(Exception e) {
@@ -49,8 +50,9 @@ public class NotificationData {
         try {
             int count = beans.length;
             for(int i=0; i<count; i++) {
-                sql.execSQL("INSERT INTO notification(owner, type, message) VALUES (" +
-                        "'" +owner+"','" + beans[i].getType() + "','" + beans[i].getMessage() + "'" +
+
+                sql.execSQL("INSERT INTO notification(access, owner, type, message1, message2) VALUES (" +
+                        "'"+beans[i].getAccess()+"' ,'" +owner+"','" + beans[i].getType() + "','" + beans[i].getMessage1() + "','" + beans[i].getMessage2() + "'" +
                         ")");
             }
             return true;
@@ -63,23 +65,37 @@ public class NotificationData {
     }
 
     // Read
-    public NotificationBean[] get(String id, int startCount) {
+    public NotificationBean[] get(String id) {
         SQLiteDatabase sql = db.getReadableDatabase();
         Cursor cursor = null;
         try {
-            cursor = sql.rawQuery("SELECT id, type, message FROM notification WHERE onwer = '"+id+"' AND id >"+startCount +" LIMIT 20", null);
+            cursor = sql.rawQuery("SELECT id, access, type, message1, message2 FROM notification WHERE owner = '"+id+"' ORDER BY id DESC", null);
+            /*
+            if(startCount != 0) {
+                cursor = sql.rawQuery("SELECT access, type, message1, message2 FROM notification WHERE owner = '"+id+"' AND id <"+startCount +" LIMIT 20 ORDER BY id DESC", null);
+            } else {
+
+                //cursor = sql.rawQuery("SELECT id, access, type, message1, message2 FROM notification WHERE owner = '"+id+"'", null);
+            }
+
+             */
+
             if(cursor != null) {
                 cursor.moveToLast();
                 int readLength = cursor.getPosition();
                 if(readLength > 0) {
                     NotificationBean[] beans = new NotificationBean[readLength+1];
                     NotificationBean bean = null;
+                    cursor.moveToFirst();
                     for(int i=0; i<readLength+1; ++i) {
                         bean = new NotificationBean();
-                        bean.setId(cursor.getString(0));
-                        bean.setType(cursor.getString(1));
-                        bean.setType(cursor.getString(2));
+                        bean.setAccess(cursor.getString(1));
 
+                        bean.setType(cursor.getString(2));
+                        bean.setMessage1(cursor.getString(3));
+                        bean.setMessage2(cursor.getString(4));
+
+                        cursor.moveToNext();
                         beans[i] = bean;
                     }
                     return beans;

@@ -105,14 +105,6 @@ public class GroupNewSchedule extends AppCompatActivity {
                                     memo
                                  */
                                 GroupVoteBean bean = response.body();
-                                Log.d("결과물", "_id : " + bean.get_id() );
-                                Log.d("결과물", "GroupCode : " + bean.getGroupCode());
-                                Log.d("결과물", "agree : " + bean.getAgree());
-                                Log.d("결과물", "name : " + bean.getName() );
-                                Log.d("결과물", "end : " + bean.getStart() );
-                                Log.d("결과물", "start : " + bean.getEnd() );
-                                Log.d("결과물", "len : " + bean.getMinLength() );
-                                Log.d("결과물", "reg_id : " + bean.getReg_id() );
 
                                 Intent intent = new Intent(getApplicationContext(), VoteActivity.class);
                                 intent.putExtra("voteCode", bean.get_id());

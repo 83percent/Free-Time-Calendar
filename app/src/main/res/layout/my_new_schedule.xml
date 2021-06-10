@@ -16,16 +16,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Schedule Name"
+                android:text="일정명"
                 android:textSize="20sp"
                 android:textFontWeight="300"
-                android:fontFamily="@font/montserrat"
                 android:textColor="#000000"/>
             <EditText
+                android:id="@+id/inputScheduleName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:hint="Travel, Meeting etc.."
+                android:hint="회의, 여행 등..."
                 android:textFontWeight="300"
                 android:paddingLeft="10dp"
                 android:fontFamily="@font/montserrat"
@@ -43,17 +43,18 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="30dp"
             android:orientation="vertical">
+
+            <!-- Start Time -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Time"
-                android:textSize="20sp"
-                android:textFontWeight="300"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="30dp"
-                android:fontFamily="@font/montserrat"
-                android:textColor="#000000"/>
-            <!-- Start Time -->
+                android:text="시간"
+                android:textColor="#000000"
+                android:textFontWeight="300"
+                android:textSize="20sp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -61,11 +62,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Start"
+                    android:text="일정 시작 시간"
                     android:layout_marginLeft="10dp"
                     android:textSize="16sp"
                     android:textFontWeight="100"
-                    android:fontFamily="@font/montserrat"
                     android:textColor="#aaaaaa"/>
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -171,15 +171,16 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginTop="30dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="End"
                     android:layout_marginLeft="10dp"
-                    android:textSize="16sp"
+                    android:text="일정 끝나는 시간"
+                    android:textColor="#aaaaaa"
                     android:textFontWeight="100"
-                    android:fontFamily="@font/montserrat"
-                    android:textColor="#aaaaaa"/>
+                    android:textSize="16sp" />
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

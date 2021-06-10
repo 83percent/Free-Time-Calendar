@@ -15,14 +15,15 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingHorizontal="40dp">
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="SIGN IN"
-                android:textSize="25sp"
-                android:fontFamily="@font/montserrat"
-                android:textColor="#000000"/>
+                android:text="로그인"
+                android:textColor="#000000"
+                android:textSize="25sp" />
+
             <ImageButton
                 android:id="@+id/signInBack"
                 android:layout_width="30dp"
@@ -108,27 +109,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:fontFamily="@font/montserrat"
-                android:text="Create Account."
+                android:text="회원이 아니신가요?"
                 android:textColor="#888888"
                 android:textSize="15sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Forgot Your Account?"
+                android:text="로그인에 문제가 발생했나요?"
                 android:layout_marginBottom="5dp"
                 android:textSize="15sp"
-                android:textColor="#888888"
-                android:fontFamily="@font/montserrat"/>
+                android:textColor="#888888" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Help!"
+                android:text="도움이 필요해요!"
                 android:layout_marginBottom="5dp"
                 android:textSize="15sp"
-                android:textColor="#888888"
-                android:fontFamily="@font/montserrat"/>
+                android:textColor="#888888" />
         </LinearLayout>
     </LinearLayout>
     <RelativeLayout
@@ -146,10 +144,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="SIGN IN"
+                android:text="로그인"
                 android:textColor="#ffffff"
-                android:textSize="19sp"
-                android:fontFamily="@font/montserrat"/>
+                android:textSize="19sp" />
         </RelativeLayout>
     </RelativeLayout>
 </LinearLayout>

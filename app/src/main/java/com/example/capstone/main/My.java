@@ -23,10 +23,16 @@ import androidx.fragment.app.Fragment;
 import com.example.capstone.MainBaseActivity;
 import com.example.capstone.R;
 import com.example.capstone.bean.FreeBean;
+import com.example.capstone.bean.TimeBean;
+import com.example.capstone.connect.RetrofitConnection;
 import com.example.capstone.data.TimeData;
 import com.example.capstone.lib.Date;
 import com.example.capstone.my.DetailActivity;
 import com.example.capstone.my.NewBase;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -207,33 +213,59 @@ public class My extends Fragment {
         createCalendar();
         attachFree(activity.getID(), activity.getApplicationContext(), year, month);
     }
+
+    private TimeBean[] comeDatas = null;
     private void attachFree(String id, Context context, int year, int month) {
-        TimeData timeData = new TimeData(id, context);
+        /*TimeData timeData = new TimeData(id, context);
         FreeBean[] beans = timeData.get(year, month);
+        */
+
+        RetrofitConnection retrofitConnection = RetrofitConnection.getInstance();
+        Call<TimeBean[]> call = retrofitConnection.server.getUserTime(id, String.valueOf(year), String.valueOf(month));
+        call.enqueue(new Callback<TimeBean[]>() {
+            @Override
+            public void onResponse(Call<TimeBean[]> call, Response<TimeBean[]> response) {
+                if(response.code() == 200 && response.body().length > 0) {
+                    TimeBean[] beans = response.body();
+                    comeDatas = response.body();
+                    LinearLayout parent = null;
+                    LinearLayout child = null;
+                    int firstDayOfWeek = date.getFirstDayOfWeek();
+
+                    for(int i=0; i<beans.length; i++) {
+                        int _o = beans[i].getsDay()+firstDayOfWeek-1;
+                        parent = WEEKS[Math.abs(_o / 7)];
+                        child = (LinearLayout) parent.getChildAt(Math.abs(_o%7));
+                        if(beans[i].getsDay() == beans[i].geteDay()) {
+                            ((FrameLayout) child.getChildAt(1)).addView(createBar(beans[i].getsHour(), beans[i].getsMin(), beans[i].geteHour(), beans[i].geteMin(), beans[i].getType()));
+                        } else {
+                            ((FrameLayout) child.getChildAt(1)).addView(createBar(beans[i].getsHour(), beans[i].getsMin(), 23, 0, beans[i].getType()));
+                        }
+                    }
+                }
+                /*
+                if(beans != null) {
+
+                }
+                */
+            }
+
+            @Override
+            public void onFailure(Call<TimeBean[]> call, Throwable t) {
+                Toast.makeText(getActivity().getApplicationContext(), "일정을 불러오지 못했어요", Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
+            }
+        });
+
         /*
             TODO : 화면에 붙이는 작업
             몇 번째 줄 위치 = |(날짜 + firstDayOfWeek(첫번쨰 1일에 위치를 구하는 값) - 1) / 7|
             몇 번째 요소 위치 = |(날짜 + firstDayOfWeek(첫번쨰 1일에 위치를 구하는 값) - 1) % 7|
          */
 
-        if(beans != null) {
-            LinearLayout parent = null;
-            LinearLayout child = null;
-            int firstDayOfWeek = date.getFirstDayOfWeek();
 
-            for(int i=0; i<beans.length; i++) {
-                int _o = beans[i].getsDay()+firstDayOfWeek-1;
-                parent = WEEKS[Math.abs(_o / 7)];
-                child = (LinearLayout) parent.getChildAt(Math.abs(_o%7));
-                if(beans[i].getsDay() == beans[i].geteDay()) {
-                    ((FrameLayout) child.getChildAt(1)).addView(createBar(beans[i].getsHour(), beans[i].getsMin(), beans[i].geteHour(), beans[i].geteMin(), true));
-                } else {
-                    ((FrameLayout) child.getChildAt(1)).addView(createBar(beans[i].getsHour(), beans[i].getsMin(), 23, 0, true));
-                }
-            }
-        }
     }
-    private FrameLayout createBar(int startHour, int startMin, int endHour, int endMin, boolean isFree) {
+    private FrameLayout createBar(int startHour, int startMin, int endHour, int endMin, String type) {
         int gap = 0;
         if(startHour == endHour) {
             gap = 3;
@@ -250,7 +282,7 @@ public class My extends Fragment {
             params.setMargins(0,startHour*3,0,0);
 
             frameLayout.setLayoutParams(params);
-            if(isFree) frameLayout.setBackgroundColor(Color.parseColor("#32BE38"));
+            if(type.equals("free")) frameLayout.setBackgroundColor(Color.parseColor("#32BE38"));
             else frameLayout.setBackgroundColor(Color.parseColor("#FF5151"));
             return frameLayout;
         }
@@ -267,5 +299,23 @@ public class My extends Fragment {
                 attachFree(activity.getID(), activity.getApplicationContext(), __year, saveMonth);
             }
         }
+    }
+
+    public TimeBean[] getDateOfBean(int date) {
+        TimeBean[] beans = null;
+        int len = 0;
+        for(int i=0; i<comeDatas.length; ++i) {
+            if(comeDatas[i].getsDay() == date) len++;
+        }
+        if(len > 0) {
+            beans = new TimeBean[len];
+            int loop = 0;
+            for(int i=0; i<comeDatas.length; ++i) {
+                if(comeDatas[i].getsDay() == date) {
+                    beans[loop] = comeDatas[i];
+                }
+            }
+        }
+        return beans;
     }
 }

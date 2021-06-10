@@ -31,7 +31,7 @@
                     android:id="@+id/dayFrame"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="-54"
+                    android:text=""
                     android:fontFamily="@font/montserrat"
                     android:textSize="24sp"
                     android:textColor="@color/baseColor"/>

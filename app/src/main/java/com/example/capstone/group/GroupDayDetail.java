@@ -141,6 +141,7 @@ public class GroupDayDetail extends AppCompatActivity {
                 TextView nameFrame = new TextView(getApplicationContext());
                 nameFrame.setGravity(Gravity.CENTER);
                 nameFrame.setText(name);
+                nameFrame.setTextColor(Color.parseColor("#ffffff"));
                 nameFrame.setLines(1);
 
                 bar.addView(nameFrame);

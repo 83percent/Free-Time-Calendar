@@ -8,6 +8,7 @@ import com.example.capstone.bean.GroupMemberBean;
 import com.example.capstone.bean.GroupScheduleBean;
 import com.example.capstone.bean.GroupVoteBean;
 import com.example.capstone.bean.IDReturnBean;
+import com.example.capstone.bean.NotificationBean;
 import com.example.capstone.bean.RequestDateBean;
 import com.example.capstone.bean.ScheduleCalendarElement;
 import com.example.capstone.bean.SignInBean;
@@ -28,11 +29,20 @@ public interface HTTPService {
     @POST("/user")
     Call<SignInReturnBean> sendSignIn(@Body SignInBean bean);
 
+    @GET("/user/time/{id}/{year}/{month}")
+    Call<TimeBean[]> getUserTime(@Path("id") String id, @Path("year") String year, @Path("month") String month);
+
+    @GET("/user/time/{id}/{year}/{month}/{day}")
+    Call<TimeBean[]> getUserTimeForDate(@Path("id") String id, @Path("year") String year, @Path("month") String month, @Path("day") String day);
+
     @POST("/user/sign")
     Call<String> sendSignUp(@Body SignUpBean bean);
 
     @POST("/free/{id}")
     Call<String> sendFree(@Path("id") String id, @Body TimeBean bean);
+
+    @POST("/user/schedule/{id}")
+    Call<String> sendSchedule(@Path("id") String id, @Body TimeBean bean);
 
     // 그룹생성
     @POST("/group")
@@ -108,4 +118,12 @@ public interface HTTPService {
 
     @POST("/vote/complete/{VoteCode}")
     Call<GroupVoteBean> sendCompleteVote(@Path("VoteCode")String code);
+
+     /*
+        ====================
+           Notification
+        ====================
+     */
+     @GET("/notification/{id}")
+    Call<NotificationBean[]> getNotification(@Path("id")String id);
 }

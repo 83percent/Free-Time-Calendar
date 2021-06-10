@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -22,10 +23,8 @@ import com.example.capstone.main.Setting;
 public class MainBaseActivity extends AppCompatActivity {
 
     // Footer Btn
-    private RelativeLayout myBtn;
-    private RelativeLayout groupBtn;
-    private RelativeLayout notificationBtn;
-    private RelativeLayout settingBtn;
+    private RelativeLayout myBtn, groupBtn, notificationBtn, settingBtn;
+    private TextView notificationCount;
 
     // Fragment
     private My myFragment;
@@ -50,6 +49,8 @@ public class MainBaseActivity extends AppCompatActivity {
         notificationBtn = (RelativeLayout) findViewById(R.id.notificationBtn);
         settingBtn = (RelativeLayout) findViewById(R.id.settingBtn);
         myBtn.getChildAt(0).setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.active)));
+        notificationCount = (TextView) findViewById(R.id.count);
+
         onMenu = myBtn;
 
         // Fragment
@@ -58,6 +59,15 @@ public class MainBaseActivity extends AppCompatActivity {
         notificationFragment = new Notification();
         settingFragment = new Setting();
 
+
+        // Come to Data
+        final SharedPreferences pref = getSharedPreferences("FreeTime",MODE_PRIVATE);
+        int newCount = pref.getInt("newCount", 0);
+        if(newCount != 0) {
+            notificationCount.setVisibility(View.VISIBLE);
+            if(newCount < 10) notificationCount.setText(String.valueOf(newCount));
+            else notificationCount.setText("9+");
+        }
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentFrame, myFragment).commit();
         viewFrame = "my";
 
@@ -88,7 +98,12 @@ public class MainBaseActivity extends AppCompatActivity {
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragmentFrame, notificationFragment).commit();
                     menuChange(notificationBtn);
                     viewFrame = "notification";
-
+                    if(notificationCount.getVisibility() == View.VISIBLE) {
+                        notificationCount.setVisibility(View.GONE);
+                        SharedPreferences.Editor editor = pref.edit();
+                        editor.putInt("newCount", 0);
+                        editor.commit();
+                    }
                 }
             }
         });

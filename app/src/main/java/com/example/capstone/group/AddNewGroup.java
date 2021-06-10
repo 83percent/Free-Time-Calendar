@@ -56,11 +56,14 @@ public class AddNewGroup extends Activity {
                         public void onResponse(Call<String> call, Response<String> response) {
                             if(response.code() == 200) {
                                 // Group DB 에 넣기
+                                /*
                                 GroupData groupData = GroupData.getInstance(getApplicationContext());
                                 boolean isCreate = groupData.set(response.body(), groupName, id);
-                                if(isCreate) {
+                                */
+
+                                if(response.code() == 200) {
                                     Intent intent = new Intent();
-                                    intent.putExtra("isCreate", isCreate);
+                                    intent.putExtra("isCreate", true);
                                     intent.putExtra("groupCode", response.body());
                                     intent.putExtra("groupName", groupName);
                                     setResult(RESULT_OK, intent);

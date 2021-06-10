@@ -31,10 +31,10 @@ public class DataManager extends SQLiteOpenHelper {
                 "code char(24) not null primary key," +
                 "name varchar(20) not null," +
                 "foreign key(code) references timeTBL(code))");
-
         // Group
         db.execSQL("CREATE TABLE groupTBL(" +
-                "groupCode char(24) not null primary key," + // mongoDB _id
+                "onwer char(24) not null," +
+                "groupCode char(24) not null unique," + // mongoDB _id
                 "name varchar(20) not null," +
                 "admin char(24) not null," +
                 "length INTEGER default 1)");
@@ -44,7 +44,9 @@ public class DataManager extends SQLiteOpenHelper {
                 "id INTEGER not null primary key autoincrement," +
                 "owner char(24) not null," +
                 "type varchar not null," +
-                "message varchar" +
+                "message1 varchar," +
+                "message2 varchar," +
+                "access chae(24)" +
                 ")");
     }
 
