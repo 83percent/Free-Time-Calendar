@@ -5,6 +5,6 @@
 
 ## Stack
 > + Android(Java)
-> + Node.js(Express.js) : https://github.com/83percent/Capstone-Design
+> + Node.js(Express.js) : https://github.com/83percent/Free-Time-Calendar-Back-End
 > + MongoDB
 > + GCP(CentOS)
